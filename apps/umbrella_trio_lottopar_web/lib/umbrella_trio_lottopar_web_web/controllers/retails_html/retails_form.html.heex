@@ -1,0 +1,18 @@
+<.form :let={f} for={@changeset} action={@action}>
+  <.input field={f[:op_id]} type="text" label="Op" />
+  <.input field={f[:name]} type="text" label="Name" />
+  <.input field={f[:tax_id]} type="text" label="Tax" />
+  <.input field={f[:status]} type="text" label="Status" />
+  <.input field={f[:address]} type="text" label="Address" />
+  <.input field={f[:city]} type="text" label="City" />
+  <.input field={f[:state]} type="text" label="State" />
+  <.input field={f[:country]} type="text" label="Country" />
+  <.input field={f[:zip_code]} type="text" label="Zip code" />
+  <.input field={f[:phone]} type="text" label="Phone" />
+  <.input field={f[:email]} type="text" label="Email" />
+  <.input field={f[:manager_name]} type="text" label="Manager name" />
+  <footer>
+    <.button variant="primary">Save Retails</.button>
+    <.button :if={@return_to} href={@return_to}>Cancel</.button>
+  </footer>
+</.form>

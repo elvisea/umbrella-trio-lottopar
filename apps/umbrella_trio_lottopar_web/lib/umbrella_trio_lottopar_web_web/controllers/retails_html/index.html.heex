@@ -1,0 +1,36 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Listing Retails
+    <:actions>
+      <.button href={~p"/retails/new"}>
+        <.icon name="hero-plus" /> New Retails
+      </.button>
+    </:actions>
+  </.header>
+
+  <.table id="retails" rows={@retails_collection} row_click={&JS.navigate(~p"/retails/#{&1}")}>
+    <:col :let={retails} label="Op">{retails.op_id}</:col>
+    <:col :let={retails} label="Name">{retails.name}</:col>
+    <:col :let={retails} label="Tax">{retails.tax_id}</:col>
+    <:col :let={retails} label="Status">{retails.status}</:col>
+    <:col :let={retails} label="Address">{retails.address}</:col>
+    <:col :let={retails} label="City">{retails.city}</:col>
+    <:col :let={retails} label="State">{retails.state}</:col>
+    <:col :let={retails} label="Country">{retails.country}</:col>
+    <:col :let={retails} label="Zip code">{retails.zip_code}</:col>
+    <:col :let={retails} label="Phone">{retails.phone}</:col>
+    <:col :let={retails} label="Email">{retails.email}</:col>
+    <:col :let={retails} label="Manager name">{retails.manager_name}</:col>
+    <:action :let={retails}>
+      <div class="sr-only">
+        <.link navigate={~p"/retails/#{retails}"}>Show</.link>
+      </div>
+      <.link navigate={~p"/retails/#{retails}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={retails}>
+      <.link href={~p"/retails/#{retails}"} method="delete" data-confirm="Are you sure?">
+        Delete
+      </.link>
+    </:action>
+  </.table>
+</Layouts.app>
