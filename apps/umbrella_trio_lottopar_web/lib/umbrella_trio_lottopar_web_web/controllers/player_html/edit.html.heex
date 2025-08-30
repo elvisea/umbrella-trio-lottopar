@@ -1,0 +1,8 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Edit Player {@player.id}
+    <:subtitle>Use this form to manage player records in your database.</:subtitle>
+  </.header>
+
+  <.player_form changeset={@changeset} action={~p"/players/#{@player}"} return_to={~p"/players"} />
+</Layouts.app>

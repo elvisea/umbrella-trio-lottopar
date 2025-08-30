@@ -27,6 +27,13 @@ defmodule UmbrellaTrioLottoparWeb.Router do
     resources "/operators", OperatorController
   end
 
+  # Players scope
+  scope "/players", UmbrellaTrioLottoparWeb do
+    pipe_through :browser
+
+    resources "/", PlayerController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", UmbrellaTrioLottoparWeb do
   #   pipe_through :api
