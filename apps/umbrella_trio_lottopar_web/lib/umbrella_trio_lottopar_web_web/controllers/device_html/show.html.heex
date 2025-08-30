@@ -1,0 +1,29 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Device {@device.id}
+    <:subtitle>This is a device record from your database.</:subtitle>
+    <:actions>
+      <.button navigate={~p"/devices"}>
+        <.icon name="hero-arrow-left" />
+      </.button>
+      <.button variant="primary" navigate={~p"/devices/#{@device}/edit?return_to=show"}>
+        <.icon name="hero-pencil-square" /> Edit device
+      </.button>
+    </:actions>
+  </.header>
+
+  <.list>
+    <:item title="Retail">{@device.retail_id}</:item>
+    <:item title="Device type">{@device.device_type}</:item>
+    <:item title="Status">{@device.status}</:item>
+    <:item title="Activation date">{@device.activation_date}</:item>
+    <:item title="Last activity">{@device.last_activity}</:item>
+    <:item title="Serial number">{@device.serial_number}</:item>
+    <:item title="Model">{@device.model}</:item>
+    <:item title="Firmware version">{@device.firmware_version}</:item>
+    <:item title="Ip address">{@device.ip_address}</:item>
+    <:item title="Mac address">{@device.mac_address}</:item>
+    <:item title="Location">{@device.location}</:item>
+    <:item title="Coordinates">{@device.coordinates}</:item>
+  </.list>
+</Layouts.app>

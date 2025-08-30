@@ -1,0 +1,17 @@
+<.form :let={f} for={@changeset} action={@action}>
+  <.input field={f[:retail_id]} type="text" label="Retail" />
+  <.input field={f[:device_type]} type="text" label="Device type" />
+  <.input field={f[:status]} type="text" label="Status" />
+  <.input field={f[:activation_date]} type="date" label="Activation date" />
+  <.input field={f[:last_activity]} type="datetime-local" label="Last activity" />
+  <.input field={f[:serial_number]} type="text" label="Serial number" />
+  <.input field={f[:model]} type="text" label="Model" />
+  <.input field={f[:firmware_version]} type="text" label="Firmware version" />
+  <.input field={f[:ip_address]} type="text" label="Ip address" />
+  <.input field={f[:mac_address]} type="text" label="Mac address" />
+  <.input field={f[:location]} type="text" label="Location" />
+  <footer>
+    <.button variant="primary">Save Device</.button>
+    <.button :if={@return_to} href={@return_to}>Cancel</.button>
+  </footer>
+</.form>

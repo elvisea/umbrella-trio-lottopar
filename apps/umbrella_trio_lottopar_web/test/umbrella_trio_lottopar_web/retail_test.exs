@@ -78,4 +78,80 @@ defmodule UmbrellaTrioLottoparWeb.RetailTest do
       assert %Ecto.Changeset{} = Retail.change_retails(retails)
     end
   end
+
+  describe "devices" do
+    alias UmbrellaTrioLottoparWeb.Retail.Device
+
+    import UmbrellaTrioLottoparWeb.RetailFixtures
+
+    @invalid_attrs %{status: nil, location: nil, retail_id: nil, device_type: nil, activation_date: nil, last_activity: nil, serial_number: nil, model: nil, firmware_version: nil, ip_address: nil, mac_address: nil, coordinates: nil}
+
+    test "list_devices/0 returns all devices" do
+      device = device_fixture()
+      assert Retail.list_devices() == [device]
+    end
+
+    test "get_device!/1 returns the device with given id" do
+      device = device_fixture()
+      assert Retail.get_device!(device.id) == device
+    end
+
+    test "create_device/1 with valid data creates a device" do
+      valid_attrs = %{status: "some status", location: "some location", retail_id: "some retail_id", device_type: "some device_type", activation_date: ~D[2025-08-29], last_activity: ~N[2025-08-29 22:08:00], serial_number: "some serial_number", model: "some model", firmware_version: "some firmware_version", ip_address: "some ip_address", mac_address: "some mac_address", coordinates: %{}}
+
+      assert {:ok, %Device{} = device} = Retail.create_device(valid_attrs)
+      assert device.status == "some status"
+      assert device.location == "some location"
+      assert device.retail_id == "some retail_id"
+      assert device.device_type == "some device_type"
+      assert device.activation_date == ~D[2025-08-29]
+      assert device.last_activity == ~N[2025-08-29 22:08:00]
+      assert device.serial_number == "some serial_number"
+      assert device.model == "some model"
+      assert device.firmware_version == "some firmware_version"
+      assert device.ip_address == "some ip_address"
+      assert device.mac_address == "some mac_address"
+      assert device.coordinates == %{}
+    end
+
+    test "create_device/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Retail.create_device(@invalid_attrs)
+    end
+
+    test "update_device/2 with valid data updates the device" do
+      device = device_fixture()
+      update_attrs = %{status: "some updated status", location: "some updated location", retail_id: "some updated retail_id", device_type: "some updated device_type", activation_date: ~D[2025-08-30], last_activity: ~N[2025-08-30 22:08:00], serial_number: "some updated serial_number", model: "some updated model", firmware_version: "some updated firmware_version", ip_address: "some updated ip_address", mac_address: "some updated mac_address", coordinates: %{}}
+
+      assert {:ok, %Device{} = device} = Retail.update_device(device, update_attrs)
+      assert device.status == "some updated status"
+      assert device.location == "some updated location"
+      assert device.retail_id == "some updated retail_id"
+      assert device.device_type == "some updated device_type"
+      assert device.activation_date == ~D[2025-08-30]
+      assert device.last_activity == ~N[2025-08-30 22:08:00]
+      assert device.serial_number == "some updated serial_number"
+      assert device.model == "some updated model"
+      assert device.firmware_version == "some updated firmware_version"
+      assert device.ip_address == "some updated ip_address"
+      assert device.mac_address == "some updated mac_address"
+      assert device.coordinates == %{}
+    end
+
+    test "update_device/2 with invalid data returns error changeset" do
+      device = device_fixture()
+      assert {:error, %Ecto.Changeset{}} = Retail.update_device(device, @invalid_attrs)
+      assert device == Retail.get_device!(device.id)
+    end
+
+    test "delete_device/1 deletes the device" do
+      device = device_fixture()
+      assert {:ok, %Device{}} = Retail.delete_device(device)
+      assert_raise Ecto.NoResultsError, fn -> Retail.get_device!(device.id) end
+    end
+
+    test "change_device/1 returns a device changeset" do
+      device = device_fixture()
+      assert %Ecto.Changeset{} = Retail.change_device(device)
+    end
+  end
 end
