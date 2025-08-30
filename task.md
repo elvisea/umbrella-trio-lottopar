@@ -505,3 +505,137 @@ Criação do modelo de entidade **Exclusion** no contexto **Players** do `apps/c
 
   * A entidade `Exclusion` criada com os campos definidos e acessível via rotas no projeto Phoenix.
   * O projeto compila sem erros.
+
+-----
+
+### **TASK_016 - Implementar Autenticação e 2FA (apps/auth)**
+
+**Descrição**
+Esta tarefa foca na implementação do núcleo de autenticação e segurança. No `apps/auth`, configure o fluxo de login com senha e o sistema de 2FA.
+
+**Objetivos**
+* Implementar o login de usuário com validação de nome de usuário e senha.
+* Configurar a integração com um sistema de OTP (One-Time Password) para 2FA.
+* Garantir o armazenamento seguro de senhas e OTPs.
+
+**Passos da Tarefa**
+1.  **Configurar o sistema de autenticação**: Use uma biblioteca como Guardian ou Pow para gerenciar a autenticação e as sessões.
+2.  **Implementar 2FA**: Crie o fluxo para que o usuário configure o 2FA via QR Code no primeiro login.
+3.  **Adicionar validações**: Implemente a lógica de expiração do OTP e o bloqueio após tentativas falhas.
+
+**Resultado Esperado**
+* Um sistema de login funcional e seguro.
+* 2FA por OTP implementado e pronto para ser usado pelas telas do backoffice.
+
+-----
+
+### **TASK_017 - Criar Backoffice Base e Layout (apps/backoffice)**
+
+**Descrição**
+Crie a estrutura básica do frontend administrativo com Phoenix LiveView. Esta tarefa estabelecerá o layout principal, navegação e a proteção de rotas.
+
+**Objetivos**
+* Configurar a aplicação `backoffice` com um layout padrão.
+* Implementar a navegação principal (menu lateral ou superior).
+* Proteger todas as telas com autenticação, garantindo que apenas usuários logados possam acessá-las.
+
+**Passos da Tarefa**
+1.  **Configurar LiveView**: Adicione a dependência LiveView no `mix.exs` e configure o `endpoint`.
+2.  **Criar o layout**: Crie o arquivo de layout principal, incluindo os elementos de UI com Tailwind CSS.
+3.  **Implementar o `router.ex`**: Use `scopes` e `pipelines` para proteger as rotas, exigindo autenticação antes do acesso às páginas.
+
+**Resultado Esperado**
+* Uma interface administrativa básica, com navegação e um layout consistente.
+* Todas as telas do backoffice protegidas, redirecionando usuários não autenticados para a página de login.
+
+-----
+
+### **TASK_018 - Implementar Gestão de Operadores (apps/backoffice)**
+
+**Descrição**
+Crie a interface de usuário completa para o gerenciamento de operadores no backoffice. Esta tarefa inclui a criação, listagem, edição e ações lógicas.
+
+**Objetivos**
+* Desenvolver a tela de listagem de operadores com paginação, filtragem e ordenação.
+* Criar o formulário de criação/edição de operadores, incluindo o sub-formulário para licenças.
+* Implementar as ações de desativar e reativar operadores.
+
+**Passos da Tarefa**
+1.  **Criar a LiveView**: Crie a LiveView responsável pela listagem e formulários de operadores.
+2.  **Desenvolver o formulário**: Crie um formulário dinâmico que, ao ser enviado, chama as funções de contexto no `apps/core`.
+3.  **Implementar as ações**: Adicione botões na tabela de listagem para desativar/reativar, com modais de confirmação.
+
+**Resultado Esperado**
+* Uma interface completa para gerenciar operadores, com um fluxo de trabalho intuitivo para o usuário.
+
+-----
+
+### **TASK_019 - Implementar Gestão de Varejistas e Dispositivos (apps/backoffice)**
+
+**Descrição**
+Desenvolver as telas de gerenciamento de varejistas e dispositivos no backoffice. Inclui a criação, listagem, edição e ações lógicas de bloqueio.
+
+**Objetivos**
+* Criar a tela de listagem de varejistas com filtros e paginação.
+* Implementar o formulário de criação de varejistas, que deve criar automaticamente uma carteira para o varejista.
+* Desenvolver a tela de gerenciamento de dispositivos.
+* Implementar a funcionalidade de bloquear e desbloquear varejistas.
+
+**Passos da Tarefa**
+1.  **LiveViews**: Crie LiveViews separadas para varejistas e dispositivos, mantendo a responsabilidade de cada tela.
+2.  **Formulário de criação**: No formulário de varejista, adicione a lógica de negócio para criar a carteira automaticamente no contexto `Finance` do `apps/core`.
+3.  **Ações**: Adicione os botões para bloquear e desbloquear varejistas, com modais de confirmação.
+
+**Resultado Esperado**
+* Um fluxo de trabalho completo para o gerenciamento de varejistas e seus dispositivos no backoffice.
+
+-----
+
+### **TASK_020 - Implementar Endpoints de API (apps/api)**
+
+**Descrição**
+Implemente todos os endpoints da API para as entidades principais. Esta tarefa é focada no `apps/api` e no roteamento, autenticação e validação das requisições.
+
+**Objetivos**
+* Criar rotas para todas as entidades (CRUD e operações específicas).
+* Garantir que todas as requisições sejam autenticadas com JWT.
+* Proteger os endpoints com autorização baseada em papéis.
+
+**Passos da Tarefa**
+1.  **Configurar Autenticação**: Use a biblioteca de JWT do Elixir (como Guardian) para validar os tokens em cada requisição.
+2.  **Criar Controladores e Endpoints**: Para cada entidade (Operador, Varejista, Jogador, Transações, Exclusões), crie um controlador e os endpoints correspondentes.
+3.  **Documentar a API**: Configure o `OpenApiSpex` para gerar automaticamente a documentação da API.
+
+**Resultado Esperado**
+* Uma API funcional e segura, com endpoints para todas as entidades principais, pronta para ser consumida por clientes externos.
+
+-----
+
+A sua pergunta é muito pertinente e a resposta é: **a tarefa continua sendo essencial**.
+
+O objetivo da **TASK\_021** não é usar o ClickHouse, mas sim **implementar a funcionalidade de auditoria**. A troca do ClickHouse por PostgreSQL é uma simplificação inteligente do setup, mas a necessidade de rastrear as ações dos usuários e armazenar os logs para relatórios continua sendo um requisito fundamental do projeto.
+
+O sistema de auditoria é crucial para a segurança e conformidade, e a sua implementação é um passo que não pode ser ignorado.
+
+Abaixo está a versão revisada da tarefa, atualizada para usar o PostgreSQL, refletindo a sua decisão.
+
+---
+
+### **TASK\_021 - Implementar Rastreamento de Auditoria (apps/audit)**
+
+**Descrição**
+Crie o núcleo do sistema de auditoria, responsável por rastrear todas as ações do usuário e armazenar os logs no PostgreSQL. Esta tarefa se concentra em desenvolver a lógica de registro de eventos para o sistema.
+
+**Objetivos**
+* Configurar a aplicação `apps/audit` para usar a mesma conexão com o banco de dados PostgreSQL do `apps/core`.
+* Desenvolver um sistema de logging que capture eventos de autenticação, transações e gerenciamento de usuários.
+* Prover funções que permitam que outros `apps` enviem logs para o `audit`.
+
+**Passos da Tarefa**
+1.  **Configurar a conexão**: No `apps/audit`, configure o `repo` para usar a mesma base de dados do `apps/core`. Isso evita a necessidade de um segundo banco de dados e simplifica a manutenção.
+2.  **Criar o módulo de logging**: Crie um módulo para receber os dados de auditoria e inseri-los no banco de dados.
+3.  **Integrar com eventos**: Use um sistema de eventos do Elixir para que as ações (ex: login, criação de usuário) disparem automaticamente um log para o `apps/audit`.
+
+**Resultado Esperado**
+* Um sistema de auditoria funcional, registrando eventos em tempo real no PostgreSQL.
+* O `apps/audit` estará pronto para ser consultado para relatórios.
