@@ -1,0 +1,8 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    New Retails
+    <:subtitle>Use this form to manage retails records in your database.</:subtitle>
+  </.header>
+
+  <.retails_form changeset={@changeset} action={~p"/retails"} return_to={~p"/retails"} />
+</Layouts.app>

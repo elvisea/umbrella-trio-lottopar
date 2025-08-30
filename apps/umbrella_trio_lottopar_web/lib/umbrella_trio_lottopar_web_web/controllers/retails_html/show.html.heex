@@ -1,0 +1,29 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Retails {@retails.id}
+    <:subtitle>This is a retails record from your database.</:subtitle>
+    <:actions>
+      <.button navigate={~p"/retails"}>
+        <.icon name="hero-arrow-left" />
+      </.button>
+      <.button variant="primary" navigate={~p"/retails/#{@retails}/edit?return_to=show"}>
+        <.icon name="hero-pencil-square" /> Edit retails
+      </.button>
+    </:actions>
+  </.header>
+
+  <.list>
+    <:item title="Op">{@retails.op_id}</:item>
+    <:item title="Name">{@retails.name}</:item>
+    <:item title="Tax">{@retails.tax_id}</:item>
+    <:item title="Status">{@retails.status}</:item>
+    <:item title="Address">{@retails.address}</:item>
+    <:item title="City">{@retails.city}</:item>
+    <:item title="State">{@retails.state}</:item>
+    <:item title="Country">{@retails.country}</:item>
+    <:item title="Zip code">{@retails.zip_code}</:item>
+    <:item title="Phone">{@retails.phone}</:item>
+    <:item title="Email">{@retails.email}</:item>
+    <:item title="Manager name">{@retails.manager_name}</:item>
+  </.list>
+</Layouts.app>
