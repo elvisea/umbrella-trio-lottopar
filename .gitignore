@@ -1,0 +1,41 @@
+# Elixir
+_build/
+deps/
+*.ez
+*.beam
+/config/*.secret.exs
+
+# Phoenix
+/priv/static/
+/priv/cache/
+/priv/repo/migrations/*.sqlite3
+/priv/repo/migrations/*.sqlite3-*
+
+# Environment
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database
+*.db
+*.sqlite3
+
+# Coverage
+/cover/
+
+# Temporary files
+*.tmp
+*.temp
