@@ -28,4 +28,29 @@ defmodule UmbrellaTrioLottoparWeb.RetailFixtures do
 
     retails
   end
+
+  @doc """
+  Generate a device.
+  """
+  def device_fixture(attrs \\ %{}) do
+    {:ok, device} =
+      attrs
+      |> Enum.into(%{
+        activation_date: ~D[2025-08-29],
+        coordinates: %{},
+        device_type: "some device_type",
+        firmware_version: "some firmware_version",
+        ip_address: "some ip_address",
+        last_activity: ~N[2025-08-29 22:08:00],
+        location: "some location",
+        mac_address: "some mac_address",
+        model: "some model",
+        retail_id: "some retail_id",
+        serial_number: "some serial_number",
+        status: "some status"
+      })
+      |> UmbrellaTrioLottoparWeb.Retail.create_device()
+
+    device
+  end
 end

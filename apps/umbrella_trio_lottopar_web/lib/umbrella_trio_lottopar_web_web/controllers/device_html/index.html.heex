@@ -1,0 +1,36 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Listing Devices
+    <:actions>
+      <.button href={~p"/devices/new"}>
+        <.icon name="hero-plus" /> New Device
+      </.button>
+    </:actions>
+  </.header>
+
+  <.table id="devices" rows={@devices} row_click={&JS.navigate(~p"/devices/#{&1}")}>
+    <:col :let={device} label="Retail">{device.retail_id}</:col>
+    <:col :let={device} label="Device type">{device.device_type}</:col>
+    <:col :let={device} label="Status">{device.status}</:col>
+    <:col :let={device} label="Activation date">{device.activation_date}</:col>
+    <:col :let={device} label="Last activity">{device.last_activity}</:col>
+    <:col :let={device} label="Serial number">{device.serial_number}</:col>
+    <:col :let={device} label="Model">{device.model}</:col>
+    <:col :let={device} label="Firmware version">{device.firmware_version}</:col>
+    <:col :let={device} label="Ip address">{device.ip_address}</:col>
+    <:col :let={device} label="Mac address">{device.mac_address}</:col>
+    <:col :let={device} label="Location">{device.location}</:col>
+    <:col :let={device} label="Coordinates">{device.coordinates}</:col>
+    <:action :let={device}>
+      <div class="sr-only">
+        <.link navigate={~p"/devices/#{device}"}>Show</.link>
+      </div>
+      <.link navigate={~p"/devices/#{device}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={device}>
+      <.link href={~p"/devices/#{device}"} method="delete" data-confirm="Are you sure?">
+        Delete
+      </.link>
+    </:action>
+  </.table>
+</Layouts.app>
