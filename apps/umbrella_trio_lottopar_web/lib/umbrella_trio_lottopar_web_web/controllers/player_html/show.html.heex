@@ -1,0 +1,35 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Player {@player.id}
+    <:subtitle>This is a player record from your database.</:subtitle>
+    <:actions>
+      <.button navigate={~p"/players"}>
+        <.icon name="hero-arrow-left" />
+      </.button>
+      <.button variant="primary" navigate={~p"/players/#{@player}/edit?return_to=show"}>
+        <.icon name="hero-pencil-square" /> Edit player
+      </.button>
+    </:actions>
+  </.header>
+
+  <.list>
+    <:item title="Op">{@player.op_id}</:item>
+    <:item title="Username">{@player.username}</:item>
+    <:item title="Password">{@player.password}</:item>
+    <:item title="Status">{@player.status}</:item>
+    <:item title="First name">{@player.first_name}</:item>
+    <:item title="Last name">{@player.last_name}</:item>
+    <:item title="Document">{@player.document}</:item>
+    <:item title="Birth date">{@player.birth_date}</:item>
+    <:item title="Phone">{@player.phone}</:item>
+    <:item title="Email">{@player.email}</:item>
+    <:item title="Gender">{@player.gender}</:item>
+    <:item title="Address">{@player.address}</:item>
+    <:item title="City">{@player.city}</:item>
+    <:item title="State">{@player.state}</:item>
+    <:item title="Country">{@player.country}</:item>
+    <:item title="Zip code">{@player.zip_code}</:item>
+    <:item title="Registration date">{@player.registration_date}</:item>
+    <:item title="Last login">{@player.last_login}</:item>
+  </.list>
+</Layouts.app>

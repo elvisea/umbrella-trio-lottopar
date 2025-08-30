@@ -1,0 +1,24 @@
+<.form :let={f} for={@changeset} action={@action}>
+  <.input field={f[:op_id]} type="text" label="Op" />
+  <.input field={f[:username]} type="text" label="Username" />
+  <.input field={f[:password]} type="text" label="Password" />
+  <.input field={f[:status]} type="text" label="Status" />
+  <.input field={f[:first_name]} type="text" label="First name" />
+  <.input field={f[:last_name]} type="text" label="Last name" />
+  <.input field={f[:document]} type="text" label="Document" />
+  <.input field={f[:birth_date]} type="date" label="Birth date" />
+  <.input field={f[:phone]} type="text" label="Phone" />
+  <.input field={f[:email]} type="text" label="Email" />
+  <.input field={f[:gender]} type="text" label="Gender" />
+  <.input field={f[:address]} type="text" label="Address" />
+  <.input field={f[:city]} type="text" label="City" />
+  <.input field={f[:state]} type="text" label="State" />
+  <.input field={f[:country]} type="text" label="Country" />
+  <.input field={f[:zip_code]} type="text" label="Zip code" />
+  <.input field={f[:registration_date]} type="date" label="Registration date" />
+  <.input field={f[:last_login]} type="datetime-local" label="Last login" />
+  <footer>
+    <.button variant="primary">Save Player</.button>
+    <.button :if={@return_to} href={@return_to}>Cancel</.button>
+  </footer>
+</.form>

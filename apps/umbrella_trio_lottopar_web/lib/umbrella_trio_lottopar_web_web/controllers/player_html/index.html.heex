@@ -1,0 +1,42 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Listing Players
+    <:actions>
+      <.button href={~p"/players/new"}>
+        <.icon name="hero-plus" /> New Player
+      </.button>
+    </:actions>
+  </.header>
+
+  <.table id="players" rows={@players} row_click={&JS.navigate(~p"/players/#{&1}")}>
+    <:col :let={player} label="Op">{player.op_id}</:col>
+    <:col :let={player} label="Username">{player.username}</:col>
+    <:col :let={player} label="Password">{player.password}</:col>
+    <:col :let={player} label="Status">{player.status}</:col>
+    <:col :let={player} label="First name">{player.first_name}</:col>
+    <:col :let={player} label="Last name">{player.last_name}</:col>
+    <:col :let={player} label="Document">{player.document}</:col>
+    <:col :let={player} label="Birth date">{player.birth_date}</:col>
+    <:col :let={player} label="Phone">{player.phone}</:col>
+    <:col :let={player} label="Email">{player.email}</:col>
+    <:col :let={player} label="Gender">{player.gender}</:col>
+    <:col :let={player} label="Address">{player.address}</:col>
+    <:col :let={player} label="City">{player.city}</:col>
+    <:col :let={player} label="State">{player.state}</:col>
+    <:col :let={player} label="Country">{player.country}</:col>
+    <:col :let={player} label="Zip code">{player.zip_code}</:col>
+    <:col :let={player} label="Registration date">{player.registration_date}</:col>
+    <:col :let={player} label="Last login">{player.last_login}</:col>
+    <:action :let={player}>
+      <div class="sr-only">
+        <.link navigate={~p"/players/#{player}"}>Show</.link>
+      </div>
+      <.link navigate={~p"/players/#{player}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={player}>
+      <.link href={~p"/players/#{player}"} method="delete" data-confirm="Are you sure?">
+        Delete
+      </.link>
+    </:action>
+  </.table>
+</Layouts.app>
