@@ -1,0 +1,30 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Listing Operators
+    <:actions>
+      <.button href={~p"/admin/operators/new"}>
+        New Operator
+      </.button>
+    </:actions>
+  </.header>
+
+  <.table id="operators" rows={@operators} row_click={&JS.navigate(~p"/admin/operators/#{&1}")}>
+    <:col :let={operator} label="Name">{operator.name}</:col>
+    <:col :let={operator} label="Company name">{operator.company_name}</:col>
+    <:col :let={operator} label="Tax">{operator.tax_id}</:col>
+    <:col :let={operator} label="Status">{operator.status}</:col>
+    <:col :let={operator} label="Country">{operator.country}</:col>
+    <:col :let={operator} label="Timezone">{operator.timezone}</:col>
+    <:action :let={operator}>
+      <div class="sr-only">
+        <.link navigate={~p"/admin/operators/#{operator}"}>Show</.link>
+      </div>
+      <.link navigate={~p"/admin/operators/#{operator}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={operator}>
+      <.link href={~p"/admin/operators/#{operator}"} method="delete" data-confirm="Are you sure?">
+        Delete
+      </.link>
+    </:action>
+  </.table>
+</Layouts.app>

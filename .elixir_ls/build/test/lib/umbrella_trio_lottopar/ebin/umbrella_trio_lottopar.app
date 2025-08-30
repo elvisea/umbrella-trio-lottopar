@@ -1,5 +1,5 @@
 {application,umbrella_trio_lottopar,
-             [{config_mtime,1756586431},
+             [{config_mtime,1756586469},
               {optional_applications,[]},
               {applications,[kernel,stdlib,elixir,logger,runtime_tools,
                              dns_cluster,phoenix_pubsub,ecto_sql,postgrex,

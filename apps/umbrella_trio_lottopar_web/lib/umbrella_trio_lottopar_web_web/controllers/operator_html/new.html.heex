@@ -1,0 +1,12 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    New Operator
+    <:subtitle>Use this form to manage operator records in your database.</:subtitle>
+  </.header>
+
+  <.operator_form
+    changeset={@changeset}
+    action={~p"/admin/operators"}
+    return_to={~p"/admin/operators"}
+  />
+</Layouts.app>

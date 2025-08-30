@@ -1,5 +1,5 @@
 {application,audit,
-             [{config_mtime,1756586431},
+             [{config_mtime,1756586469},
               {optional_applications,[]},
               {applications,[kernel,stdlib,elixir,logger]},
               {description,"audit"},

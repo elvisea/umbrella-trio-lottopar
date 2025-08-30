@@ -1,5 +1,5 @@
 {application,auth,
-             [{config_mtime,1756586431},
+             [{config_mtime,1756586469},
               {compile_env,[{auth,['Elixir.AuthWeb.Endpoint',code_reloader],
                                   error},
                             {auth,['Elixir.AuthWeb.Endpoint',debug_errors],

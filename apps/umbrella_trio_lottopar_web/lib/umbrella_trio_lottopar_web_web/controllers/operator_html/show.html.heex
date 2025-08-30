@@ -1,0 +1,24 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Operator #{@operator.id}
+    <:subtitle>This is a operator record from your database.</:subtitle>
+    <:actions>
+      <.button variant="primary" navigate={~p"/admin/operators/#{@operator}/edit?return_to=show"}>
+        Edit Operator
+      </.button>
+    </:actions>
+  </.header>
+
+  <.list>
+    <:item title="Name">{@operator.name}</:item>
+    <:item title="Company name">{@operator.company_name}</:item>
+    <:item title="Tax">{@operator.tax_id}</:item>
+    <:item title="Status">{@operator.status}</:item>
+    <:item title="Country">{@operator.country}</:item>
+    <:item title="Timezone">{@operator.timezone}</:item>
+  </.list>
+
+  <.link navigate={~p"/admin/operators"}>
+    Back to operators
+  </.link>
+</Layouts.app>

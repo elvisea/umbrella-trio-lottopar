@@ -20,6 +20,13 @@ defmodule UmbrellaTrioLottoparWeb.Router do
     get "/", PageController, :home
   end
 
+  # Admin scope
+  scope "/admin", UmbrellaTrioLottoparWeb do
+    pipe_through :browser
+
+    resources "/operators", OperatorController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", UmbrellaTrioLottoparWeb do
   #   pipe_through :api
