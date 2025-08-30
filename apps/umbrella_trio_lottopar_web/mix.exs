@@ -71,7 +71,11 @@ defmodule UmbrellaTrioLottoparWeb.MixProject do
       setup: ["deps.get", "assets.setup", "assets.build"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["compile", "tailwind umbrella_trio_lottopar_web", "esbuild umbrella_trio_lottopar_web"],
+      "assets.build": [
+        "compile",
+        "tailwind umbrella_trio_lottopar_web",
+        "esbuild umbrella_trio_lottopar_web"
+      ],
       "assets.deploy": [
         "tailwind umbrella_trio_lottopar_web --minify",
         "esbuild umbrella_trio_lottopar_web --minify",

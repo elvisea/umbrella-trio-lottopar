@@ -1,5 +1,5 @@
 {application,backoffice,
-    [{config_mtime,1756586431},
+    [{config_mtime,1756586469},
      {compile_env,
          [{backoffice,['Elixir.BackofficeWeb.Endpoint',code_reloader],error},
           {backoffice,['Elixir.BackofficeWeb.Endpoint',debug_errors],error},

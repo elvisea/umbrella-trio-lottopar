@@ -1,5 +1,5 @@
 {application,api,
-             [{config_mtime,1756586431},
+             [{config_mtime,1756586469},
               {compile_env,[{api,['Elixir.ApiWeb.Endpoint',code_reloader],
                                  error},
                             {api,['Elixir.ApiWeb.Endpoint',debug_errors],

@@ -1,0 +1,12 @@
+<.form :let={f} for={@changeset} action={@action}>
+  <.input field={f[:name]} type="text" label="Name" />
+  <.input field={f[:company_name]} type="text" label="Company name" />
+  <.input field={f[:tax_id]} type="text" label="Tax" />
+  <.input field={f[:status]} type="text" label="Status" />
+  <.input field={f[:country]} type="text" label="Country" />
+  <.input field={f[:timezone]} type="text" label="Timezone" />
+  <footer>
+    <.button variant="primary">Save Operator</.button>
+    <.button :if={@return_to} href={@return_to}>Cancel</.button>
+  </footer>
+</.form>
