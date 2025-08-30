@@ -1,0 +1,23 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Wallet {@wallet.id}
+    <:subtitle>This is a wallet record from your database.</:subtitle>
+    <:actions>
+      <.button navigate={~p"/wallets"}>
+        <.icon name="hero-arrow-left" />
+      </.button>
+      <.button variant="primary" navigate={~p"/wallets/#{@wallet}/edit?return_to=show"}>
+        <.icon name="hero-pencil-square" /> Edit wallet
+      </.button>
+    </:actions>
+  </.header>
+
+  <.list>
+    <:item title="Player">{@wallet.player_id}</:item>
+    <:item title="Retail">{@wallet.retail_id}</:item>
+    <:item title="Wallet type">{@wallet.wallet_type}</:item>
+    <:item title="Currency code">{@wallet.currency_code}</:item>
+    <:item title="Total cash">{@wallet.total_cash}</:item>
+    <:item title="Total bonus">{@wallet.total_bonus}</:item>
+  </.list>
+</Layouts.app>

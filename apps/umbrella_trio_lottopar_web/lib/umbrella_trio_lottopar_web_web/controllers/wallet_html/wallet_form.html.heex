@@ -1,0 +1,12 @@
+<.form :let={f} for={@changeset} action={@action}>
+  <.input field={f[:player_id]} type="text" label="Player" />
+  <.input field={f[:retail_id]} type="text" label="Retail" />
+  <.input field={f[:wallet_type]} type="text" label="Wallet type" />
+  <.input field={f[:currency_code]} type="text" label="Currency code" />
+  <.input field={f[:total_cash]} type="number" label="Total cash" step="any" />
+  <.input field={f[:total_bonus]} type="number" label="Total bonus" step="any" />
+  <footer>
+    <.button variant="primary">Save Wallet</.button>
+    <.button :if={@return_to} href={@return_to}>Cancel</.button>
+  </footer>
+</.form>

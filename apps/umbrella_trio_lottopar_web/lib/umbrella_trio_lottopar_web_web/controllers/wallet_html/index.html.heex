@@ -1,0 +1,30 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Listing Wallets
+    <:actions>
+      <.button href={~p"/wallets/new"}>
+        <.icon name="hero-plus" /> New Wallet
+      </.button>
+    </:actions>
+  </.header>
+
+  <.table id="wallets" rows={@wallets} row_click={&JS.navigate(~p"/wallets/#{&1}")}>
+    <:col :let={wallet} label="Player">{wallet.player_id}</:col>
+    <:col :let={wallet} label="Retail">{wallet.retail_id}</:col>
+    <:col :let={wallet} label="Wallet type">{wallet.wallet_type}</:col>
+    <:col :let={wallet} label="Currency code">{wallet.currency_code}</:col>
+    <:col :let={wallet} label="Total cash">{wallet.total_cash}</:col>
+    <:col :let={wallet} label="Total bonus">{wallet.total_bonus}</:col>
+    <:action :let={wallet}>
+      <div class="sr-only">
+        <.link navigate={~p"/wallets/#{wallet}"}>Show</.link>
+      </div>
+      <.link navigate={~p"/wallets/#{wallet}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={wallet}>
+      <.link href={~p"/wallets/#{wallet}"} method="delete" data-confirm="Are you sure?">
+        Delete
+      </.link>
+    </:action>
+  </.table>
+</Layouts.app>

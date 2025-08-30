@@ -41,6 +41,13 @@ defmodule UmbrellaTrioLottoparWeb.Router do
     resources "/", RetailsController
   end
 
+  # Wallet scope
+  scope "/wallets", UmbrellaTrioLottoparWeb do
+    pipe_through :browser
+
+    resources "/", WalletController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", UmbrellaTrioLottoparWeb do
   #   pipe_through :api
