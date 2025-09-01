@@ -94,7 +94,14 @@ defmodule UmbrellaTrioLottoparWeb.AdminTest do
 
     import UmbrellaTrioLottoparWeb.AdminFixtures
 
-    @invalid_attrs %{status: nil, otp: nil, user_type: nil, username: nil, password: nil, op_id: nil}
+    @invalid_attrs %{
+      status: nil,
+      otp: nil,
+      user_type: nil,
+      username: nil,
+      password: nil,
+      op_id: nil
+    }
 
     test "list_users/0 returns all users" do
       user = user_fixture()
@@ -107,7 +114,14 @@ defmodule UmbrellaTrioLottoparWeb.AdminTest do
     end
 
     test "create_user/1 with valid data creates a user" do
-      valid_attrs = %{status: "some status", otp: "some otp", user_type: "some user_type", username: "some username", password: "some password", op_id: "some op_id"}
+      valid_attrs = %{
+        status: "some status",
+        otp: "some otp",
+        user_type: "some user_type",
+        username: "some username",
+        password: "some password",
+        op_id: "some op_id"
+      }
 
       assert {:ok, %User{} = user} = Admin.create_user(valid_attrs)
       assert user.status == "some status"
@@ -124,7 +138,15 @@ defmodule UmbrellaTrioLottoparWeb.AdminTest do
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
-      update_attrs = %{status: "some updated status", otp: "some updated otp", user_type: "some updated user_type", username: "some updated username", password: "some updated password", op_id: "some updated op_id"}
+
+      update_attrs = %{
+        status: "some updated status",
+        otp: "some updated otp",
+        user_type: "some updated user_type",
+        username: "some updated username",
+        password: "some updated password",
+        op_id: "some updated op_id"
+      }
 
       assert {:ok, %User{} = user} = Admin.update_user(user, update_attrs)
       assert user.status == "some updated status"

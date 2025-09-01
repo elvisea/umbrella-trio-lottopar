@@ -3,9 +3,66 @@ defmodule UmbrellaTrioLottoparWeb.PlayerControllerTest do
 
   import UmbrellaTrioLottoparWeb.PlayersFixtures
 
-  @create_attrs %{status: "some status", state: "some state", address: "some address", username: "some username", password: "some password", op_id: "some op_id", first_name: "some first_name", last_name: "some last_name", document: "some document", birth_date: ~D[2025-08-29], phone: "some phone", email: "some email", gender: "some gender", city: "some city", country: "some country", zip_code: "some zip_code", registration_date: ~D[2025-08-29], last_login: ~N[2025-08-29 20:54:00]}
-  @update_attrs %{status: "some updated status", state: "some updated state", address: "some updated address", username: "some updated username", password: "some updated password", op_id: "some updated op_id", first_name: "some updated first_name", last_name: "some updated last_name", document: "some updated document", birth_date: ~D[2025-08-30], phone: "some updated phone", email: "some updated email", gender: "some updated gender", city: "some updated city", country: "some updated country", zip_code: "some updated zip_code", registration_date: ~D[2025-08-30], last_login: ~N[2025-08-30 20:54:00]}
-  @invalid_attrs %{status: nil, state: nil, address: nil, username: nil, password: nil, op_id: nil, first_name: nil, last_name: nil, document: nil, birth_date: nil, phone: nil, email: nil, gender: nil, city: nil, country: nil, zip_code: nil, registration_date: nil, last_login: nil}
+  @create_attrs %{
+    status: "some status",
+    state: "some state",
+    address: "some address",
+    username: "some username",
+    password: "some password",
+    op_id: "some op_id",
+    first_name: "some first_name",
+    last_name: "some last_name",
+    document: "some document",
+    birth_date: ~D[2025-08-29],
+    phone: "some phone",
+    email: "some email",
+    gender: "some gender",
+    city: "some city",
+    country: "some country",
+    zip_code: "some zip_code",
+    registration_date: ~D[2025-08-29],
+    last_login: ~N[2025-08-29 20:54:00]
+  }
+  @update_attrs %{
+    status: "some updated status",
+    state: "some updated state",
+    address: "some updated address",
+    username: "some updated username",
+    password: "some updated password",
+    op_id: "some updated op_id",
+    first_name: "some updated first_name",
+    last_name: "some updated last_name",
+    document: "some updated document",
+    birth_date: ~D[2025-08-30],
+    phone: "some updated phone",
+    email: "some updated email",
+    gender: "some updated gender",
+    city: "some updated city",
+    country: "some updated country",
+    zip_code: "some updated zip_code",
+    registration_date: ~D[2025-08-30],
+    last_login: ~N[2025-08-30 20:54:00]
+  }
+  @invalid_attrs %{
+    status: nil,
+    state: nil,
+    address: nil,
+    username: nil,
+    password: nil,
+    op_id: nil,
+    first_name: nil,
+    last_name: nil,
+    document: nil,
+    birth_date: nil,
+    phone: nil,
+    email: nil,
+    gender: nil,
+    city: nil,
+    country: nil,
+    zip_code: nil,
+    registration_date: nil,
+    last_login: nil
+  }
 
   describe "index" do
     test "lists all players", %{conn: conn} do

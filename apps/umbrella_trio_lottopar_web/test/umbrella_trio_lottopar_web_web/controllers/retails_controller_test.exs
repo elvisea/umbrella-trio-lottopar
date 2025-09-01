@@ -3,9 +3,48 @@ defmodule UmbrellaTrioLottoparWeb.RetailsControllerTest do
 
   import UmbrellaTrioLottoparWeb.RetailFixtures
 
-  @create_attrs %{name: "some name", status: "some status", state: "some state", address: "some address", op_id: "some op_id", tax_id: "some tax_id", city: "some city", country: "some country", zip_code: "some zip_code", phone: "some phone", email: "some email", manager_name: "some manager_name"}
-  @update_attrs %{name: "some updated name", status: "some updated status", state: "some updated state", address: "some updated address", op_id: "some updated op_id", tax_id: "some updated tax_id", city: "some updated city", country: "some updated country", zip_code: "some updated zip_code", phone: "some updated phone", email: "some updated email", manager_name: "some updated manager_name"}
-  @invalid_attrs %{name: nil, status: nil, state: nil, address: nil, op_id: nil, tax_id: nil, city: nil, country: nil, zip_code: nil, phone: nil, email: nil, manager_name: nil}
+  @create_attrs %{
+    name: "some name",
+    status: "some status",
+    state: "some state",
+    address: "some address",
+    op_id: "some op_id",
+    tax_id: "some tax_id",
+    city: "some city",
+    country: "some country",
+    zip_code: "some zip_code",
+    phone: "some phone",
+    email: "some email",
+    manager_name: "some manager_name"
+  }
+  @update_attrs %{
+    name: "some updated name",
+    status: "some updated status",
+    state: "some updated state",
+    address: "some updated address",
+    op_id: "some updated op_id",
+    tax_id: "some updated tax_id",
+    city: "some updated city",
+    country: "some updated country",
+    zip_code: "some updated zip_code",
+    phone: "some updated phone",
+    email: "some updated email",
+    manager_name: "some updated manager_name"
+  }
+  @invalid_attrs %{
+    name: nil,
+    status: nil,
+    state: nil,
+    address: nil,
+    op_id: nil,
+    tax_id: nil,
+    city: nil,
+    country: nil,
+    zip_code: nil,
+    phone: nil,
+    email: nil,
+    manager_name: nil
+  }
 
   describe "index" do
     test "lists all retails", %{conn: conn} do

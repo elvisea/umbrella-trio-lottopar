@@ -3,12 +3,12 @@ defmodule UmbrellaTrioLottoparWeb.Admin.User do
   import Ecto.Changeset
 
   schema "users" do
-    field :op_id, :string
-    field :user_type, :string
-    field :status, :string
-    field :username, :string
-    field :password, :string
-    field :otp, :string
+    field(:op_id, :string)
+    field(:user_type, :string)
+    field(:status, :string)
+    field(:username, :string)
+    field(:password, :string)
+    field(:otp, :string)
 
     timestamps()
   end
