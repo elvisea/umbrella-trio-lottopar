@@ -1,8 +1,8 @@
-defmodule Core.Finance.Withdraw do
+defmodule Repo.Schemas.Finance.Deposit do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "withdraws" do
+  schema "deposits" do
     field(:txn_amount, :decimal)
     field(:tax_amount, :decimal)
     field(:wallet_affected_amount, :decimal)
@@ -12,11 +12,10 @@ defmodule Core.Finance.Withdraw do
     field(:process_charges, :string)
     field(:codigo_lottopar, :string)
     field(:ref_txn_id, :string)
+    field(:payment_type, :string)
+    field(:sub_payment_type, :string)
     field(:service_charges, :string)
     field(:tp_txn_id, :string)
-    field(:account, :string)
-    field(:confirmation_date, :naive_datetime)
-    field(:currency_code, :string)
     field(:retail_data, :map)
 
     # Relacionamentos
@@ -27,8 +26,8 @@ defmodule Core.Finance.Withdraw do
   end
 
   @doc false
-  def changeset(withdraw, attrs) do
-    withdraw
+  def changeset(deposit, attrs) do
+    deposit
     |> cast(attrs, [
       :player_id,
       :op_id,
@@ -41,11 +40,10 @@ defmodule Core.Finance.Withdraw do
       :process_charges,
       :codigo_lottopar,
       :ref_txn_id,
+      :payment_type,
+      :sub_payment_type,
       :service_charges,
       :tp_txn_id,
-      :account,
-      :confirmation_date,
-      :currency_code,
       :retail_data
     ])
     |> validate_required([
@@ -60,11 +58,10 @@ defmodule Core.Finance.Withdraw do
       :process_charges,
       :codigo_lottopar,
       :ref_txn_id,
+      :payment_type,
+      :sub_payment_type,
       :service_charges,
-      :tp_txn_id,
-      :account,
-      :confirmation_date,
-      :currency_code
+      :tp_txn_id
     ])
   end
 end

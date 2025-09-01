@@ -1,4 +1,4 @@
-defmodule Core.Players.Player do
+defmodule Repo.Schemas.Players.Player do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -23,9 +23,9 @@ defmodule Core.Players.Player do
 
     # Relacionamentos
     field(:op_id, :string)
-    has_many(:deposits, Core.Finance.Deposit)
-    has_many(:withdraws, Core.Finance.Withdraw)
-    has_one(:wallet, Core.Finance.Wallet)
+    has_many(:deposits, Repo.Schemas.Finance.Deposit)
+    has_many(:withdraws, Repo.Schemas.Finance.Withdraw)
+    has_one(:wallet, Repo.Schemas.Finance.Wallet)
 
     timestamps()
   end

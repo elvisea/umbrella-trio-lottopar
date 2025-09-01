@@ -1,12 +1,10 @@
-defmodule Web.Players do
+defmodule Core.Contexts.Players do
   @moduledoc """
   The Players context.
   """
 
   import Ecto.Query, warn: false
-  alias UmbrellaTrioLottopar.Repo
-
-  alias Core.Players.Player
+  alias Repo.Repo, as: Repo
 
   @doc """
   Returns the list of players.
@@ -14,11 +12,11 @@ defmodule Web.Players do
   ## Examples
 
       iex> list_players()
-      [%Player{}, ...]
+      [%Repo.Schemas.Players.Player{}, ...]
 
   """
   def list_players do
-    Repo.all(Player)
+    Repo.Repo.all(Player)
   end
 
   @doc """
@@ -29,13 +27,13 @@ defmodule Web.Players do
   ## Examples
 
       iex> get_player!(123)
-      %Player{}
+      %Repo.Schemas.Players.Player{}
 
       iex> get_player!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_player!(id), do: Repo.get!(Player, id)
+  def get_player!(id), do: Repo.Repo.get!(Player, id)
 
   @doc """
   Creates a player.
@@ -43,16 +41,16 @@ defmodule Web.Players do
   ## Examples
 
       iex> create_player(%{field: value})
-      {:ok, %Player{}}
+      {:ok, %Repo.Schemas.Players.Player{}}
 
       iex> create_player(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
   def create_player(attrs) do
-    %Player{}
+    %Repo.Schemas.Players.Player{}
     |> Player.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.Repo.insert()
   end
 
   @doc """
@@ -61,16 +59,16 @@ defmodule Web.Players do
   ## Examples
 
       iex> update_player(player, %{field: new_value})
-      {:ok, %Player{}}
+      {:ok, %Repo.Schemas.Players.Player{}}
 
       iex> update_player(player, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_player(%Player{} = player, attrs) do
+  def update_player(%Repo.Schemas.Players.Player{} = player, attrs) do
     player
     |> Player.changeset(attrs)
-    |> Repo.update()
+    |> Repo.Repo.update()
   end
 
   @doc """
@@ -79,14 +77,14 @@ defmodule Web.Players do
   ## Examples
 
       iex> delete_player(player)
-      {:ok, %Player{}}
+      {:ok, %Repo.Schemas.Players.Player{}}
 
       iex> delete_player(player)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_player(%Player{} = player) do
-    Repo.delete(player)
+  def delete_player(%Repo.Schemas.Players.Player{} = player) do
+    Repo.Repo.delete(player)
   end
 
   @doc """
@@ -95,10 +93,10 @@ defmodule Web.Players do
   ## Examples
 
       iex> change_player(player)
-      %Ecto.Changeset{data: %Player{}}
+      %Ecto.Changeset{data: %Repo.Schemas.Players.Player{}}
 
   """
-  def change_player(%Player{} = player, attrs \\ %{}) do
+  def change_player(%Repo.Schemas.Players.Player{} = player, attrs \\ %{}) do
     Player.changeset(player, attrs)
   end
 end

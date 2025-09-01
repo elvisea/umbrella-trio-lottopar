@@ -1,12 +1,12 @@
-defmodule Web.Finance do
+defmodule Core.Contexts.Finance do
   @moduledoc """
   The Finance context.
   """
 
   import Ecto.Query, warn: false
-  alias UmbrellaTrioLottopar.Repo
+  alias Repo.Repo, as: Repo
 
-  alias Core.Finance.Wallet
+
 
   @doc """
   Returns the list of wallets.
@@ -14,11 +14,11 @@ defmodule Web.Finance do
   ## Examples
 
       iex> list_wallets()
-      [%Wallet{}, ...]
+      [%Repo.Schemas.Finance.Wallet{}, ...]
 
   """
   def list_wallets do
-    Repo.all(Wallet)
+    Repo.Repo.all(Wallet)
   end
 
   @doc """
@@ -29,13 +29,13 @@ defmodule Web.Finance do
   ## Examples
 
       iex> get_wallet!(123)
-      %Wallet{}
+      %Repo.Schemas.Finance.Wallet{}
 
       iex> get_wallet!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_wallet!(id), do: Repo.get!(Wallet, id)
+  def get_wallet!(id), do: Repo.Repo.get!(Wallet, id)
 
   @doc """
   Creates a wallet.
@@ -43,16 +43,16 @@ defmodule Web.Finance do
   ## Examples
 
       iex> create_wallet(%{field: value})
-      {:ok, %Wallet{}}
+      {:ok, %Repo.Schemas.Finance.Wallet{}}
 
       iex> create_wallet(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
   def create_wallet(attrs) do
-    %Wallet{}
+    %Repo.Schemas.Finance.Wallet{}
     |> Wallet.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.Repo.insert()
   end
 
   @doc """
@@ -61,16 +61,16 @@ defmodule Web.Finance do
   ## Examples
 
       iex> update_wallet(wallet, %{field: new_value})
-      {:ok, %Wallet{}}
+      {:ok, %Repo.Schemas.Finance.Wallet{}}
 
       iex> update_wallet(wallet, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_wallet(%Wallet{} = wallet, attrs) do
+  def update_wallet(%Repo.Schemas.Finance.Wallet{} = wallet, attrs) do
     wallet
     |> Wallet.changeset(attrs)
-    |> Repo.update()
+    |> Repo.Repo.update()
   end
 
   @doc """
@@ -79,14 +79,14 @@ defmodule Web.Finance do
   ## Examples
 
       iex> delete_wallet(wallet)
-      {:ok, %Wallet{}}
+      {:ok, %Repo.Schemas.Finance.Wallet{}}
 
       iex> delete_wallet(wallet)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_wallet(%Wallet{} = wallet) do
-    Repo.delete(wallet)
+  def delete_wallet(%Repo.Schemas.Finance.Wallet{} = wallet) do
+    Repo.Repo.delete(wallet)
   end
 
   @doc """
@@ -95,14 +95,14 @@ defmodule Web.Finance do
   ## Examples
 
       iex> change_wallet(wallet)
-      %Ecto.Changeset{data: %Wallet{}}
+      %Ecto.Changeset{data: %Repo.Schemas.Finance.Wallet{}}
 
   """
-  def change_wallet(%Wallet{} = wallet, attrs \\ %{}) do
+  def change_wallet(%Repo.Schemas.Finance.Wallet{} = wallet, attrs \\ %{}) do
     Wallet.changeset(wallet, attrs)
   end
 
-  alias Core.Finance.Deposit
+
 
   @doc """
   Returns the list of deposits.
@@ -114,7 +114,7 @@ defmodule Web.Finance do
 
   """
   def list_deposits do
-    Repo.all(Deposit)
+    Repo.Repo.all(Deposit)
   end
 
   @doc """
@@ -131,7 +131,7 @@ defmodule Web.Finance do
       ** (Ecto.NoResultsError)
 
   """
-  def get_deposit!(id), do: Repo.get!(Deposit, id)
+  def get_deposit!(id), do: Repo.Repo.get!(Deposit, id)
 
   @doc """
   Creates a deposit.
@@ -148,7 +148,7 @@ defmodule Web.Finance do
   def create_deposit(attrs) do
     %Deposit{}
     |> Deposit.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.Repo.insert()
   end
 
   @doc """
@@ -166,7 +166,7 @@ defmodule Web.Finance do
   def update_deposit(%Deposit{} = deposit, attrs) do
     deposit
     |> Deposit.changeset(attrs)
-    |> Repo.update()
+    |> Repo.Repo.update()
   end
 
   @doc """
@@ -182,7 +182,7 @@ defmodule Web.Finance do
 
   """
   def delete_deposit(%Deposit{} = deposit) do
-    Repo.delete(deposit)
+    Repo.Repo.delete(deposit)
   end
 
   @doc """
@@ -198,7 +198,7 @@ defmodule Web.Finance do
     Deposit.changeset(deposit, attrs)
   end
 
-  alias Core.Finance.Withdraw
+
 
   @doc """
   Returns the list of withdraws.
@@ -210,7 +210,7 @@ defmodule Web.Finance do
 
   """
   def list_withdraws do
-    Repo.all(Withdraw)
+    Repo.Repo.all(Withdraw)
   end
 
   @doc """
@@ -227,7 +227,7 @@ defmodule Web.Finance do
       ** (Ecto.NoResultsError)
 
   """
-  def get_withdraw!(id), do: Repo.get!(Withdraw, id)
+  def get_withdraw!(id), do: Repo.Repo.get!(Withdraw, id)
 
   @doc """
   Creates a withdraw.
@@ -244,7 +244,7 @@ defmodule Web.Finance do
   def create_withdraw(attrs) do
     %Withdraw{}
     |> Withdraw.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.Repo.insert()
   end
 
   @doc """
@@ -262,7 +262,7 @@ defmodule Web.Finance do
   def update_withdraw(%Withdraw{} = withdraw, attrs) do
     withdraw
     |> Withdraw.changeset(attrs)
-    |> Repo.update()
+    |> Repo.Repo.update()
   end
 
   @doc """
@@ -278,7 +278,7 @@ defmodule Web.Finance do
 
   """
   def delete_withdraw(%Withdraw{} = withdraw) do
-    Repo.delete(withdraw)
+    Repo.Repo.delete(withdraw)
   end
 
   @doc """
