@@ -1,4 +1,4 @@
-defmodule Core.Admin.User do
+defmodule Repo.Schemas.Admin.User do
   use Ecto.Schema
   import Ecto.Changeset
 

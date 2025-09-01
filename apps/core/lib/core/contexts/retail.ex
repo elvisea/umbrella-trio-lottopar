@@ -1,12 +1,11 @@
-defmodule Web.Retail do
+defmodule Core.Contexts.Retail do
   @moduledoc """
   The Retail context.
   """
 
   import Ecto.Query, warn: false
-  alias UmbrellaTrioLottopar.Repo
+  alias Repo.Repo, as: Repo
 
-  alias Core.Retail.Retail
 
   @doc """
   Returns the list of retails.
@@ -14,11 +13,11 @@ defmodule Web.Retail do
   ## Examples
 
       iex> list_retails()
-      [%Retail{}, ...]
+      [%Repo.Schemas.Retail.Retail{}, ...]
 
   """
   def list_retails do
-    Repo.all(Retail)
+    Repo.Repo.all(Retail)
   end
 
   @doc """
@@ -29,13 +28,13 @@ defmodule Web.Retail do
   ## Examples
 
       iex> get_retail!(123)
-      %Retail{}
+      %Repo.Schemas.Retail.Retail{}
 
       iex> get_retail!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_retail!(id), do: Repo.get!(Retail, id)
+  def get_retail!(id), do: Repo.Repo.get!(Retail, id)
 
   @doc """
   Creates a retail.
@@ -43,16 +42,16 @@ defmodule Web.Retail do
   ## Examples
 
       iex> create_retail(%{field: value})
-      {:ok, %Retail{}}
+      {:ok, %Repo.Schemas.Retail.Retail{}}
 
       iex> create_retail(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
   def create_retail(attrs) do
-    %Retail{}
+    %Repo.Schemas.Retail.Retail{}
     |> Retail.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.Repo.insert()
   end
 
   @doc """
@@ -61,16 +60,16 @@ defmodule Web.Retail do
   ## Examples
 
       iex> update_retail(retail, %{field: new_value})
-      {:ok, %Retail{}}
+      {:ok, %Repo.Schemas.Retail.Retail{}}
 
       iex> update_retail(retail, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_retail(%Retail{} = retail, attrs) do
+  def update_retail(%Repo.Schemas.Retail.Retail{} = retail, attrs) do
     retail
     |> Retail.changeset(attrs)
-    |> Repo.update()
+    |> Repo.Repo.update()
   end
 
   @doc """
@@ -79,14 +78,14 @@ defmodule Web.Retail do
   ## Examples
 
       iex> delete_retail(retail)
-      {:ok, %Retail{}}
+      {:ok, %Repo.Schemas.Retail.Retail{}}
 
       iex> delete_retail(retail)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_retail(%Retail{} = retail) do
-    Repo.delete(retail)
+  def delete_retail(%Repo.Schemas.Retail.Retail{} = retail) do
+    Repo.Repo.delete(retail)
   end
 
   @doc """
@@ -95,14 +94,14 @@ defmodule Web.Retail do
   ## Examples
 
       iex> change_retail(retail)
-      %Ecto.Changeset{data: %Retail{}}
+      %Ecto.Changeset{data: %Repo.Schemas.Retail.Retail{}}
 
   """
-  def change_retail(%Retail{} = retail, attrs \\ %{}) do
+  def change_retail(%Repo.Schemas.Retail.Retail{} = retail, attrs \\ %{}) do
     Retail.changeset(retail, attrs)
   end
 
-  alias Core.Retail.Device
+
 
   @doc """
   Returns the list of devices.
@@ -114,7 +113,7 @@ defmodule Web.Retail do
 
   """
   def list_devices do
-    Repo.all(Device)
+    Repo.Repo.all(Device)
   end
 
   @doc """
@@ -131,7 +130,7 @@ defmodule Web.Retail do
       ** (Ecto.NoResultsError)
 
   """
-  def get_device!(id), do: Repo.get!(Device, id)
+  def get_device!(id), do: Repo.Repo.get!(Device, id)
 
   @doc """
   Creates a device.
@@ -148,7 +147,7 @@ defmodule Web.Retail do
   def create_device(attrs) do
     %Device{}
     |> Device.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.Repo.insert()
   end
 
   @doc """
@@ -166,7 +165,7 @@ defmodule Web.Retail do
   def update_device(%Device{} = device, attrs) do
     device
     |> Device.changeset(attrs)
-    |> Repo.update()
+    |> Repo.Repo.update()
   end
 
   @doc """
@@ -182,7 +181,7 @@ defmodule Web.Retail do
 
   """
   def delete_device(%Device{} = device) do
-    Repo.delete(device)
+    Repo.Repo.delete(device)
   end
 
   @doc """

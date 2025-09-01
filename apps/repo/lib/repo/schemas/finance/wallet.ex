@@ -1,4 +1,4 @@
-defmodule Core.Finance.Wallet do
+defmodule Repo.Schemas.Finance.Wallet do
   use Ecto.Schema
   import Ecto.Changeset
 

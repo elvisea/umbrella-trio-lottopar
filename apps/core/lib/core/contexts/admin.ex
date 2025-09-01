@@ -1,12 +1,11 @@
-defmodule Web.Admin do
+defmodule Core.Contexts.Admin do
   @moduledoc """
   The Admin context.
   """
 
   import Ecto.Query, warn: false
-  alias UmbrellaTrioLottopar.Repo
 
-  alias Core.Admin.Operator
+
 
   @doc """
   Returns the list of operators.
@@ -14,11 +13,11 @@ defmodule Web.Admin do
   ## Examples
 
       iex> list_operators()
-      [%Operator{}, ...]
+      [%Repo.Schemas.Admin.Operator{}, ...]
 
   """
   def list_operators do
-    Repo.all(Operator)
+    Repo.Repo.Repo.all(Repo.Schemas.Admin.Operator)
   end
 
   @doc """
@@ -29,13 +28,13 @@ defmodule Web.Admin do
   ## Examples
 
       iex> get_operator!(123)
-      %Operator{}
+      %Repo.Schemas.Admin.Operator{}
 
       iex> get_operator!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_operator!(id), do: Repo.get!(Operator, id)
+  def get_operator!(id), do: Repo.Repo.get!(Repo.Schemas.Admin.Operator, id)
 
   @doc """
   Creates an operator.
@@ -43,16 +42,16 @@ defmodule Web.Admin do
   ## Examples
 
       iex> create_operator(%{field: value})
-      {:ok, %Operator{}}
+      {:ok, %Repo.Schemas.Admin.Operator{}}
 
       iex> create_operator(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
   def create_operator(attrs) do
-    %Operator{}
-    |> Operator.changeset(attrs)
-    |> Repo.insert()
+    %Repo.Schemas.Admin.Operator{}
+    |> Repo.Schemas.Admin.Operator.changeset(attrs)
+    |> Repo.Repo.insert()
   end
 
   @doc """
@@ -61,16 +60,16 @@ defmodule Web.Admin do
   ## Examples
 
       iex> update_operator(operator, %{field: new_value})
-      {:ok, %Operator{}}
+      {:ok, %Repo.Schemas.Admin.Operator{}}
 
       iex> update_operator(operator, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_operator(%Operator{} = operator, attrs) do
+  def update_operator(%Repo.Schemas.Admin.Operator{} = operator, attrs) do
     operator
-    |> Operator.changeset(attrs)
-    |> Repo.update()
+    |> Repo.Schemas.Admin.Operator.changeset(attrs)
+    |> Repo.Repo.update()
   end
 
   @doc """
@@ -79,14 +78,14 @@ defmodule Web.Admin do
   ## Examples
 
       iex> delete_operator(operator)
-      {:ok, %Operator{}}
+      {:ok, %Repo.Schemas.Admin.Operator{}}
 
       iex> delete_operator(operator)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_operator(%Operator{} = operator) do
-    Repo.delete(operator)
+  def delete_operator(%Repo.Schemas.Admin.Operator{} = operator) do
+    Repo.Repo.delete(operator)
   end
 
   @doc """
@@ -95,14 +94,14 @@ defmodule Web.Admin do
   ## Examples
 
       iex> change_operator(operator)
-      %Ecto.Changeset{data: %Operator{}}
+      %Ecto.Changeset{data: %Repo.Schemas.Admin.Operator{}}
 
   """
-  def change_operator(%Operator{} = operator, attrs \\ %{}) do
-    Operator.changeset(operator, attrs)
+  def change_operator(%Repo.Schemas.Admin.Operator{} = operator, attrs \\ %{}) do
+    Repo.Schemas.Admin.Operator.changeset(operator, attrs)
   end
 
-  alias Core.Admin.User
+
 
   @doc """
   Returns the list of users.
@@ -114,7 +113,7 @@ defmodule Web.Admin do
 
   """
   def list_users do
-    Repo.all(User)
+    Repo.Repo.all(User)
   end
 
   @doc """
@@ -131,7 +130,7 @@ defmodule Web.Admin do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id), do: Repo.Repo.get!(User, id)
 
   @doc """
   Creates a user.
@@ -148,7 +147,7 @@ defmodule Web.Admin do
   def create_user(attrs) do
     %User{}
     |> User.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.Repo.insert()
   end
 
   @doc """
@@ -166,7 +165,7 @@ defmodule Web.Admin do
   def update_user(%User{} = user, attrs) do
     user
     |> User.changeset(attrs)
-    |> Repo.update()
+    |> Repo.Repo.update()
   end
 
   @doc """
@@ -182,7 +181,7 @@ defmodule Web.Admin do
 
   """
   def delete_user(%User{} = user) do
-    Repo.delete(user)
+    Repo.Repo.delete(user)
   end
 
   @doc """

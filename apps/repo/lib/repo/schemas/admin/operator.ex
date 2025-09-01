@@ -1,4 +1,4 @@
-defmodule Core.Admin.Operator do
+defmodule Repo.Schemas.Admin.Operator do
   use Ecto.Schema
   import Ecto.Changeset
 

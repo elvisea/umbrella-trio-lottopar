@@ -1,4 +1,4 @@
-defmodule Core.Retail.Device do
+defmodule Repo.Schemas.Retail.Device do
   use Ecto.Schema
   import Ecto.Changeset
 

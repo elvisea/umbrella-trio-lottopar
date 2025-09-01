@@ -46,8 +46,7 @@ config :logger, :default_formatter,
 config :phoenix, :json_library, Jason
 
 # Configure LiveView signing salt
-config :web, Web.Endpoint,
-  live_view: [signing_salt: "GGE4O5hVC58FGg5E"]
+config :web, Web.Endpoint, live_view: [signing_salt: "GGE4O5hVC58FGg5E"]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

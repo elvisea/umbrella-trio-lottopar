@@ -9,8 +9,7 @@ defmodule Repo.Application do
   def start(_type, _args) do
     children = [
       Repo.Repo,
-      {DNSCluster,
-       query: Application.get_env(:repo, :dns_cluster_query) || :ignore},
+      {DNSCluster, query: Application.get_env(:repo, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Repo.PubSub}
       # Start a worker by calling: Repo.Worker.start_link(arg)
       # {Repo.Worker, arg}

@@ -1,4 +1,4 @@
-defmodule Core.Retail.Retail do
+defmodule Repo.Schemas.Retail.Retail do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -17,7 +17,7 @@ defmodule Core.Retail.Retail do
 
     # Relacionamentos
     field(:op_id, :string)
-    has_many(:devices, Core.Retail.Device)
+    has_many(:devices, Repo.Schemas.Retail.Device)
 
     timestamps()
   end

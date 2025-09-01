@@ -22,8 +22,7 @@ config :web, Web.Endpoint,
   secret_key_base: "4Nx4Am8+EDYZ0TsAlVq8ULD+wD34Fptr6IdIgsvMRH7RWrbWqQgqn3IRHKC4o2ZK",
   pubsub_server: Web.PubSub,
   watchers: [
-    esbuild:
-      {Esbuild, :install_and_run, [:web, ~w(--sourcemap=inline --watch)]},
+    esbuild: {Esbuild, :install_and_run, [:web, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:web, ~w(--watch)]}
   ]
 
