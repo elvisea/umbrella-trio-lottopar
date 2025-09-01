@@ -19,11 +19,23 @@ config :umbrella_trio_lottopar, UmbrellaTrioLottopar.Mailer, adapter: Swoosh.Ada
 
 # Configure esbuild (the version is required)
 config :esbuild,
-  version: "0.25.4"
+  version: "0.25.4",
+  umbrella_trio_lottopar_web: [
+    args: ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets),
+    cd: Path.expand("../apps/umbrella_trio_lottopar_web/assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
 
 # Configure tailwind (the version is required)
 config :tailwind,
-  version: "4.1.7"
+  version: "4.1.7",
+  umbrella_trio_lottopar_web: [
+    args: ~w(
+      --input=css/app.css
+      --output=../priv/static/assets/app.css
+    ),
+    cd: Path.expand("../apps/umbrella_trio_lottopar_web/assets", __DIR__)
+  ]
 
 # Configures Elixir's Logger
 config :logger, :default_formatter,

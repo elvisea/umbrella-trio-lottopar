@@ -3,9 +3,30 @@ defmodule UmbrellaTrioLottoparWeb.UserControllerTest do
 
   import UmbrellaTrioLottoparWeb.AdminFixtures
 
-  @create_attrs %{status: "some status", otp: "some otp", user_type: "some user_type", username: "some username", password: "some password", op_id: "some op_id"}
-  @update_attrs %{status: "some updated status", otp: "some updated otp", user_type: "some updated user_type", username: "some updated username", password: "some updated password", op_id: "some updated op_id"}
-  @invalid_attrs %{status: nil, otp: nil, user_type: nil, username: nil, password: nil, op_id: nil}
+  @create_attrs %{
+    status: "some status",
+    otp: "some otp",
+    user_type: "some user_type",
+    username: "some username",
+    password: "some password",
+    op_id: "some op_id"
+  }
+  @update_attrs %{
+    status: "some updated status",
+    otp: "some updated otp",
+    user_type: "some updated user_type",
+    username: "some updated username",
+    password: "some updated password",
+    op_id: "some updated op_id"
+  }
+  @invalid_attrs %{
+    status: nil,
+    otp: nil,
+    user_type: nil,
+    username: nil,
+    password: nil,
+    op_id: nil
+  }
 
   describe "index" do
     test "lists all users", %{conn: conn} do

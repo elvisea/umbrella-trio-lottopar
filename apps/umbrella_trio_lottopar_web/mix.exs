@@ -60,7 +60,8 @@ defmodule UmbrellaTrioLottoparWeb.MixProject do
       {:umbrella_trio_lottopar, in_umbrella: true},
       {:core, in_umbrella: true},
       {:jason, "~> 1.2"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:plug_cowboy, "~> 2.5"}
     ]
   end
 

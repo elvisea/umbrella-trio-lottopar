@@ -4,5 +4,9 @@
     <:subtitle>Use this form to manage deposit records in your database.</:subtitle>
   </.header>
 
-  <.deposit_form changeset={@changeset} action={~p"/deposits/#{@deposit}"} return_to={~p"/deposits"} />
+  <.deposit_form
+    changeset={@changeset}
+    action={~p"/deposits/#{@deposit}"}
+    return_to={~p"/deposits"}
+  />
 </Layouts.app>

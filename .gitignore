@@ -25,3 +25,8 @@ erl_crash.dump
 # Elixir Language Server cache
 /.elixir_ls/
 
+# Ignore the .env file
+.env
+
+# Ignore the .env.local file
+.env.local

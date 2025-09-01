@@ -3,9 +3,48 @@ defmodule UmbrellaTrioLottoparWeb.DeviceControllerTest do
 
   import UmbrellaTrioLottoparWeb.RetailFixtures
 
-  @create_attrs %{status: "some status", location: "some location", retail_id: "some retail_id", device_type: "some device_type", activation_date: ~D[2025-08-29], last_activity: ~N[2025-08-29 22:08:00], serial_number: "some serial_number", model: "some model", firmware_version: "some firmware_version", ip_address: "some ip_address", mac_address: "some mac_address", coordinates: %{}}
-  @update_attrs %{status: "some updated status", location: "some updated location", retail_id: "some updated retail_id", device_type: "some updated device_type", activation_date: ~D[2025-08-30], last_activity: ~N[2025-08-30 22:08:00], serial_number: "some updated serial_number", model: "some updated model", firmware_version: "some updated firmware_version", ip_address: "some updated ip_address", mac_address: "some updated mac_address", coordinates: %{}}
-  @invalid_attrs %{status: nil, location: nil, retail_id: nil, device_type: nil, activation_date: nil, last_activity: nil, serial_number: nil, model: nil, firmware_version: nil, ip_address: nil, mac_address: nil, coordinates: nil}
+  @create_attrs %{
+    status: "some status",
+    location: "some location",
+    retail_id: "some retail_id",
+    device_type: "some device_type",
+    activation_date: ~D[2025-08-29],
+    last_activity: ~N[2025-08-29 22:08:00],
+    serial_number: "some serial_number",
+    model: "some model",
+    firmware_version: "some firmware_version",
+    ip_address: "some ip_address",
+    mac_address: "some mac_address",
+    coordinates: %{}
+  }
+  @update_attrs %{
+    status: "some updated status",
+    location: "some updated location",
+    retail_id: "some updated retail_id",
+    device_type: "some updated device_type",
+    activation_date: ~D[2025-08-30],
+    last_activity: ~N[2025-08-30 22:08:00],
+    serial_number: "some updated serial_number",
+    model: "some updated model",
+    firmware_version: "some updated firmware_version",
+    ip_address: "some updated ip_address",
+    mac_address: "some updated mac_address",
+    coordinates: %{}
+  }
+  @invalid_attrs %{
+    status: nil,
+    location: nil,
+    retail_id: nil,
+    device_type: nil,
+    activation_date: nil,
+    last_activity: nil,
+    serial_number: nil,
+    model: nil,
+    firmware_version: nil,
+    ip_address: nil,
+    mac_address: nil,
+    coordinates: nil
+  }
 
   describe "index" do
     test "lists all devices", %{conn: conn} do

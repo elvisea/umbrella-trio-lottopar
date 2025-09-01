@@ -8,7 +8,14 @@ defmodule UmbrellaTrioLottoparWeb.FinanceTest do
 
     import UmbrellaTrioLottoparWeb.FinanceFixtures
 
-    @invalid_attrs %{player_id: nil, retail_id: nil, wallet_type: nil, currency_code: nil, total_cash: nil, total_bonus: nil}
+    @invalid_attrs %{
+      player_id: nil,
+      retail_id: nil,
+      wallet_type: nil,
+      currency_code: nil,
+      total_cash: nil,
+      total_bonus: nil
+    }
 
     test "list_wallets/0 returns all wallets" do
       wallet = wallet_fixture()
@@ -21,7 +28,14 @@ defmodule UmbrellaTrioLottoparWeb.FinanceTest do
     end
 
     test "create_wallet/1 with valid data creates a wallet" do
-      valid_attrs = %{player_id: "some player_id", retail_id: "some retail_id", wallet_type: "some wallet_type", currency_code: "some currency_code", total_cash: "120.5", total_bonus: "120.5"}
+      valid_attrs = %{
+        player_id: "some player_id",
+        retail_id: "some retail_id",
+        wallet_type: "some wallet_type",
+        currency_code: "some currency_code",
+        total_cash: "120.5",
+        total_bonus: "120.5"
+      }
 
       assert {:ok, %Wallet{} = wallet} = Finance.create_wallet(valid_attrs)
       assert wallet.player_id == "some player_id"
@@ -38,7 +52,15 @@ defmodule UmbrellaTrioLottoparWeb.FinanceTest do
 
     test "update_wallet/2 with valid data updates the wallet" do
       wallet = wallet_fixture()
-      update_attrs = %{player_id: "some updated player_id", retail_id: "some updated retail_id", wallet_type: "some updated wallet_type", currency_code: "some updated currency_code", total_cash: "456.7", total_bonus: "456.7"}
+
+      update_attrs = %{
+        player_id: "some updated player_id",
+        retail_id: "some updated retail_id",
+        wallet_type: "some updated wallet_type",
+        currency_code: "some updated currency_code",
+        total_cash: "456.7",
+        total_bonus: "456.7"
+      }
 
       assert {:ok, %Wallet{} = wallet} = Finance.update_wallet(wallet, update_attrs)
       assert wallet.player_id == "some updated player_id"
@@ -72,7 +94,24 @@ defmodule UmbrellaTrioLottoparWeb.FinanceTest do
 
     import UmbrellaTrioLottoparWeb.FinanceFixtures
 
-    @invalid_attrs %{player_id: nil, op_id: nil, txn_amount: nil, tax_amount: nil, wallet_affected_amount: nil, txn_status: nil, txn_date: nil, txn_mode: nil, process_charges: nil, codigo_lottopar: nil, ref_txn_id: nil, payment_type: nil, sub_payment_type: nil, service_charges: nil, tp_txn_id: nil, retail_data: nil}
+    @invalid_attrs %{
+      player_id: nil,
+      op_id: nil,
+      txn_amount: nil,
+      tax_amount: nil,
+      wallet_affected_amount: nil,
+      txn_status: nil,
+      txn_date: nil,
+      txn_mode: nil,
+      process_charges: nil,
+      codigo_lottopar: nil,
+      ref_txn_id: nil,
+      payment_type: nil,
+      sub_payment_type: nil,
+      service_charges: nil,
+      tp_txn_id: nil,
+      retail_data: nil
+    }
 
     test "list_deposits/0 returns all deposits" do
       deposit = deposit_fixture()
@@ -85,7 +124,24 @@ defmodule UmbrellaTrioLottoparWeb.FinanceTest do
     end
 
     test "create_deposit/1 with valid data creates a deposit" do
-      valid_attrs = %{player_id: "some player_id", op_id: "some op_id", txn_amount: "120.5", tax_amount: "120.5", wallet_affected_amount: "120.5", txn_status: "some txn_status", txn_date: ~N[2025-08-31 13:55:00], txn_mode: "some txn_mode", process_charges: "some process_charges", codigo_lottopar: "some codigo_lottopar", ref_txn_id: "some ref_txn_id", payment_type: "some payment_type", sub_payment_type: "some sub_payment_type", service_charges: "some service_charges", tp_txn_id: "some tp_txn_id", retail_data: %{}}
+      valid_attrs = %{
+        player_id: "some player_id",
+        op_id: "some op_id",
+        txn_amount: "120.5",
+        tax_amount: "120.5",
+        wallet_affected_amount: "120.5",
+        txn_status: "some txn_status",
+        txn_date: ~N[2025-08-31 13:55:00],
+        txn_mode: "some txn_mode",
+        process_charges: "some process_charges",
+        codigo_lottopar: "some codigo_lottopar",
+        ref_txn_id: "some ref_txn_id",
+        payment_type: "some payment_type",
+        sub_payment_type: "some sub_payment_type",
+        service_charges: "some service_charges",
+        tp_txn_id: "some tp_txn_id",
+        retail_data: %{}
+      }
 
       assert {:ok, %Deposit{} = deposit} = Finance.create_deposit(valid_attrs)
       assert deposit.player_id == "some player_id"
@@ -112,7 +168,25 @@ defmodule UmbrellaTrioLottoparWeb.FinanceTest do
 
     test "update_deposit/2 with valid data updates the deposit" do
       deposit = deposit_fixture()
-      update_attrs = %{player_id: "some updated player_id", op_id: "some updated op_id", txn_amount: "456.7", tax_amount: "456.7", wallet_affected_amount: "456.7", txn_status: "some updated txn_status", txn_date: ~N[2025-09-01 13:55:00], txn_mode: "some updated txn_mode", process_charges: "some updated process_charges", codigo_lottopar: "some updated codigo_lottopar", ref_txn_id: "some updated ref_txn_id", payment_type: "some updated payment_type", sub_payment_type: "some updated sub_payment_type", service_charges: "some updated service_charges", tp_txn_id: "some updated tp_txn_id", retail_data: %{}}
+
+      update_attrs = %{
+        player_id: "some updated player_id",
+        op_id: "some updated op_id",
+        txn_amount: "456.7",
+        tax_amount: "456.7",
+        wallet_affected_amount: "456.7",
+        txn_status: "some updated txn_status",
+        txn_date: ~N[2025-09-01 13:55:00],
+        txn_mode: "some updated txn_mode",
+        process_charges: "some updated process_charges",
+        codigo_lottopar: "some updated codigo_lottopar",
+        ref_txn_id: "some updated ref_txn_id",
+        payment_type: "some updated payment_type",
+        sub_payment_type: "some updated sub_payment_type",
+        service_charges: "some updated service_charges",
+        tp_txn_id: "some updated tp_txn_id",
+        retail_data: %{}
+      }
 
       assert {:ok, %Deposit{} = deposit} = Finance.update_deposit(deposit, update_attrs)
       assert deposit.player_id == "some updated player_id"
@@ -156,7 +230,25 @@ defmodule UmbrellaTrioLottoparWeb.FinanceTest do
 
     import UmbrellaTrioLottoparWeb.FinanceFixtures
 
-    @invalid_attrs %{player_id: nil, op_id: nil, txn_amount: nil, tax_amount: nil, wallet_affected_amount: nil, txn_status: nil, txn_date: nil, txn_mode: nil, process_charges: nil, codigo_lottopar: nil, ref_txn_id: nil, service_charges: nil, tp_txn_id: nil, account: nil, confirmation_date: nil, currency_code: nil, retail_data: nil}
+    @invalid_attrs %{
+      player_id: nil,
+      op_id: nil,
+      txn_amount: nil,
+      tax_amount: nil,
+      wallet_affected_amount: nil,
+      txn_status: nil,
+      txn_date: nil,
+      txn_mode: nil,
+      process_charges: nil,
+      codigo_lottopar: nil,
+      ref_txn_id: nil,
+      service_charges: nil,
+      tp_txn_id: nil,
+      account: nil,
+      confirmation_date: nil,
+      currency_code: nil,
+      retail_data: nil
+    }
 
     test "list_withdraws/0 returns all withdraws" do
       withdraw = withdraw_fixture()
@@ -169,7 +261,25 @@ defmodule UmbrellaTrioLottoparWeb.FinanceTest do
     end
 
     test "create_withdraw/1 with valid data creates a withdraw" do
-      valid_attrs = %{player_id: "some player_id", op_id: "some op_id", txn_amount: "120.5", tax_amount: "120.5", wallet_affected_amount: "120.5", txn_status: "some txn_status", txn_date: ~N[2025-08-31 14:34:00], txn_mode: "some txn_mode", process_charges: "some process_charges", codigo_lottopar: "some codigo_lottopar", ref_txn_id: "some ref_txn_id", service_charges: "some service_charges", tp_txn_id: "some tp_txn_id", account: "some account", confirmation_date: ~N[2025-08-31 14:34:00], currency_code: "some currency_code", retail_data: %{}}
+      valid_attrs = %{
+        player_id: "some player_id",
+        op_id: "some op_id",
+        txn_amount: "120.5",
+        tax_amount: "120.5",
+        wallet_affected_amount: "120.5",
+        txn_status: "some txn_status",
+        txn_date: ~N[2025-08-31 14:34:00],
+        txn_mode: "some txn_mode",
+        process_charges: "some process_charges",
+        codigo_lottopar: "some codigo_lottopar",
+        ref_txn_id: "some ref_txn_id",
+        service_charges: "some service_charges",
+        tp_txn_id: "some tp_txn_id",
+        account: "some account",
+        confirmation_date: ~N[2025-08-31 14:34:00],
+        currency_code: "some currency_code",
+        retail_data: %{}
+      }
 
       assert {:ok, %Withdraw{} = withdraw} = Finance.create_withdraw(valid_attrs)
       assert withdraw.player_id == "some player_id"
@@ -197,7 +307,26 @@ defmodule UmbrellaTrioLottoparWeb.FinanceTest do
 
     test "update_withdraw/2 with valid data updates the withdraw" do
       withdraw = withdraw_fixture()
-      update_attrs = %{player_id: "some updated player_id", op_id: "some updated op_id", txn_amount: "456.7", tax_amount: "456.7", wallet_affected_amount: "456.7", txn_status: "some updated txn_status", txn_date: ~N[2025-09-01 14:34:00], txn_mode: "some updated txn_mode", process_charges: "some updated process_charges", codigo_lottopar: "some updated codigo_lottopar", ref_txn_id: "some updated ref_txn_id", service_charges: "some updated service_charges", tp_txn_id: "some updated tp_txn_id", account: "some updated account", confirmation_date: ~N[2025-09-01 14:34:00], currency_code: "some updated currency_code", retail_data: %{}}
+
+      update_attrs = %{
+        player_id: "some updated player_id",
+        op_id: "some updated op_id",
+        txn_amount: "456.7",
+        tax_amount: "456.7",
+        wallet_affected_amount: "456.7",
+        txn_status: "some updated txn_status",
+        txn_date: ~N[2025-09-01 14:34:00],
+        txn_mode: "some updated txn_mode",
+        process_charges: "some updated process_charges",
+        codigo_lottopar: "some updated codigo_lottopar",
+        ref_txn_id: "some updated ref_txn_id",
+        service_charges: "some updated service_charges",
+        tp_txn_id: "some updated tp_txn_id",
+        account: "some updated account",
+        confirmation_date: ~N[2025-09-01 14:34:00],
+        currency_code: "some updated currency_code",
+        retail_data: %{}
+      }
 
       assert {:ok, %Withdraw{} = withdraw} = Finance.update_withdraw(withdraw, update_attrs)
       assert withdraw.player_id == "some updated player_id"

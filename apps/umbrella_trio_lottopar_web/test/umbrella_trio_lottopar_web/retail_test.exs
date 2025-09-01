@@ -8,7 +8,20 @@ defmodule UmbrellaTrioLottoparWeb.RetailTest do
 
     import UmbrellaTrioLottoparWeb.RetailFixtures
 
-    @invalid_attrs %{name: nil, status: nil, state: nil, address: nil, op_id: nil, tax_id: nil, city: nil, country: nil, zip_code: nil, phone: nil, email: nil, manager_name: nil}
+    @invalid_attrs %{
+      name: nil,
+      status: nil,
+      state: nil,
+      address: nil,
+      op_id: nil,
+      tax_id: nil,
+      city: nil,
+      country: nil,
+      zip_code: nil,
+      phone: nil,
+      email: nil,
+      manager_name: nil
+    }
 
     test "list_retails/0 returns all retails" do
       retails = retails_fixture()
@@ -21,7 +34,20 @@ defmodule UmbrellaTrioLottoparWeb.RetailTest do
     end
 
     test "create_retails/1 with valid data creates a retails" do
-      valid_attrs = %{name: "some name", status: "some status", state: "some state", address: "some address", op_id: "some op_id", tax_id: "some tax_id", city: "some city", country: "some country", zip_code: "some zip_code", phone: "some phone", email: "some email", manager_name: "some manager_name"}
+      valid_attrs = %{
+        name: "some name",
+        status: "some status",
+        state: "some state",
+        address: "some address",
+        op_id: "some op_id",
+        tax_id: "some tax_id",
+        city: "some city",
+        country: "some country",
+        zip_code: "some zip_code",
+        phone: "some phone",
+        email: "some email",
+        manager_name: "some manager_name"
+      }
 
       assert {:ok, %Retails{} = retails} = Retail.create_retails(valid_attrs)
       assert retails.name == "some name"
@@ -44,7 +70,21 @@ defmodule UmbrellaTrioLottoparWeb.RetailTest do
 
     test "update_retails/2 with valid data updates the retails" do
       retails = retails_fixture()
-      update_attrs = %{name: "some updated name", status: "some updated status", state: "some updated state", address: "some updated address", op_id: "some updated op_id", tax_id: "some updated tax_id", city: "some updated city", country: "some updated country", zip_code: "some updated zip_code", phone: "some updated phone", email: "some updated email", manager_name: "some updated manager_name"}
+
+      update_attrs = %{
+        name: "some updated name",
+        status: "some updated status",
+        state: "some updated state",
+        address: "some updated address",
+        op_id: "some updated op_id",
+        tax_id: "some updated tax_id",
+        city: "some updated city",
+        country: "some updated country",
+        zip_code: "some updated zip_code",
+        phone: "some updated phone",
+        email: "some updated email",
+        manager_name: "some updated manager_name"
+      }
 
       assert {:ok, %Retails{} = retails} = Retail.update_retails(retails, update_attrs)
       assert retails.name == "some updated name"
@@ -84,7 +124,20 @@ defmodule UmbrellaTrioLottoparWeb.RetailTest do
 
     import UmbrellaTrioLottoparWeb.RetailFixtures
 
-    @invalid_attrs %{status: nil, location: nil, retail_id: nil, device_type: nil, activation_date: nil, last_activity: nil, serial_number: nil, model: nil, firmware_version: nil, ip_address: nil, mac_address: nil, coordinates: nil}
+    @invalid_attrs %{
+      status: nil,
+      location: nil,
+      retail_id: nil,
+      device_type: nil,
+      activation_date: nil,
+      last_activity: nil,
+      serial_number: nil,
+      model: nil,
+      firmware_version: nil,
+      ip_address: nil,
+      mac_address: nil,
+      coordinates: nil
+    }
 
     test "list_devices/0 returns all devices" do
       device = device_fixture()
@@ -97,7 +150,20 @@ defmodule UmbrellaTrioLottoparWeb.RetailTest do
     end
 
     test "create_device/1 with valid data creates a device" do
-      valid_attrs = %{status: "some status", location: "some location", retail_id: "some retail_id", device_type: "some device_type", activation_date: ~D[2025-08-29], last_activity: ~N[2025-08-29 22:08:00], serial_number: "some serial_number", model: "some model", firmware_version: "some firmware_version", ip_address: "some ip_address", mac_address: "some mac_address", coordinates: %{}}
+      valid_attrs = %{
+        status: "some status",
+        location: "some location",
+        retail_id: "some retail_id",
+        device_type: "some device_type",
+        activation_date: ~D[2025-08-29],
+        last_activity: ~N[2025-08-29 22:08:00],
+        serial_number: "some serial_number",
+        model: "some model",
+        firmware_version: "some firmware_version",
+        ip_address: "some ip_address",
+        mac_address: "some mac_address",
+        coordinates: %{}
+      }
 
       assert {:ok, %Device{} = device} = Retail.create_device(valid_attrs)
       assert device.status == "some status"
@@ -120,7 +186,21 @@ defmodule UmbrellaTrioLottoparWeb.RetailTest do
 
     test "update_device/2 with valid data updates the device" do
       device = device_fixture()
-      update_attrs = %{status: "some updated status", location: "some updated location", retail_id: "some updated retail_id", device_type: "some updated device_type", activation_date: ~D[2025-08-30], last_activity: ~N[2025-08-30 22:08:00], serial_number: "some updated serial_number", model: "some updated model", firmware_version: "some updated firmware_version", ip_address: "some updated ip_address", mac_address: "some updated mac_address", coordinates: %{}}
+
+      update_attrs = %{
+        status: "some updated status",
+        location: "some updated location",
+        retail_id: "some updated retail_id",
+        device_type: "some updated device_type",
+        activation_date: ~D[2025-08-30],
+        last_activity: ~N[2025-08-30 22:08:00],
+        serial_number: "some updated serial_number",
+        model: "some updated model",
+        firmware_version: "some updated firmware_version",
+        ip_address: "some updated ip_address",
+        mac_address: "some updated mac_address",
+        coordinates: %{}
+      }
 
       assert {:ok, %Device{} = device} = Retail.update_device(device, update_attrs)
       assert device.status == "some updated status"
