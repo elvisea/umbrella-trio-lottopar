@@ -1,4 +1,4 @@
-defmodule UmbrellaTrioLottoparWeb.Admin.User do
+defmodule Web.Admin.User do
   use Ecto.Schema
   import Ecto.Changeset
 

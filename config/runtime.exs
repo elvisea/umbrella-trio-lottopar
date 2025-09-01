@@ -319,7 +319,7 @@ if config_env() == :prod do
 
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
-  config :umbrella_trio_lottopar, UmbrellaTrioLottopar.Repo,
+  config :repo, Repo.Repo,
     # ssl: true,
     url: database_url,
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
@@ -339,7 +339,7 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  config :umbrella_trio_lottopar_web, UmbrellaTrioLottoparWeb.Endpoint,
+  config :web, Web.Endpoint,
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -408,5 +408,5 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 
-  config :umbrella_trio_lottopar, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
+  config :repo, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 end
