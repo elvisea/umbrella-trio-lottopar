@@ -1,9 +1,8 @@
-defmodule UmbrellaTrioLottoparWeb.Players.Player do
+defmodule Core.Players.Player do
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "players" do
-    field(:op_id, :string)
     field(:username, :string)
     field(:password, :string)
     field(:status, :string)
@@ -22,6 +21,12 @@ defmodule UmbrellaTrioLottoparWeb.Players.Player do
     field(:registration_date, :date)
     field(:last_login, :naive_datetime)
 
+    # Relacionamentos
+    belongs_to(:operator, Core.Admin.Operator)
+    has_many(:deposits, Core.Finance.Deposit)
+    has_many(:withdraws, Core.Finance.Withdraw)
+    has_one(:wallet, Core.Finance.Wallet)
+
     timestamps()
   end
 
@@ -29,7 +34,7 @@ defmodule UmbrellaTrioLottoparWeb.Players.Player do
   def changeset(player, attrs) do
     player
     |> cast(attrs, [
-      :op_id,
+      :operator_id,
       :username,
       :password,
       :status,
@@ -49,7 +54,7 @@ defmodule UmbrellaTrioLottoparWeb.Players.Player do
       :last_login
     ])
     |> validate_required([
-      :op_id,
+      :operator_id,
       :username,
       :password,
       :status,

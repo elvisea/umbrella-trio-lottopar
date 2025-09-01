@@ -1,4 +1,4 @@
-defmodule UmbrellaTrioLottoparWeb.Admin.Operator do
+defmodule Core.Admin.Operator do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -9,6 +9,11 @@ defmodule UmbrellaTrioLottoparWeb.Admin.Operator do
     field(:status, :string)
     field(:country, :string)
     field(:timezone, :string)
+
+    # Relacionamentos
+    has_many(:users, Core.Admin.User)
+    has_many(:players, Core.Players.Player)
+    has_many(:retails, Core.Retail.Retail)
 
     timestamps()
   end

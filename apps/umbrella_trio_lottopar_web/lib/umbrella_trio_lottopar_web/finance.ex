@@ -6,7 +6,7 @@ defmodule UmbrellaTrioLottoparWeb.Finance do
   import Ecto.Query, warn: false
   alias UmbrellaTrioLottoparWeb.Repo
 
-  alias UmbrellaTrioLottoparWeb.Finance.Wallet
+  alias Core.Finance.Wallet
 
   @doc """
   Returns the list of wallets.
@@ -102,7 +102,7 @@ defmodule UmbrellaTrioLottoparWeb.Finance do
     Wallet.changeset(wallet, attrs)
   end
 
-  alias UmbrellaTrioLottoparWeb.Finance.Deposit
+  alias Core.Finance.Deposit
 
   @doc """
   Returns the list of deposits.
@@ -198,7 +198,7 @@ defmodule UmbrellaTrioLottoparWeb.Finance do
     Deposit.changeset(deposit, attrs)
   end
 
-  alias UmbrellaTrioLottoparWeb.Finance.Withdraw
+  alias Core.Finance.Withdraw
 
   @doc """
   Returns the list of withdraws.

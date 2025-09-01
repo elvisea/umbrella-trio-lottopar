@@ -2,7 +2,7 @@ defmodule UmbrellaTrioLottoparWeb.OperatorController do
   use UmbrellaTrioLottoparWeb, :controller
 
   alias UmbrellaTrioLottoparWeb.Admin
-  alias UmbrellaTrioLottoparWeb.Admin.Operator
+  alias Core.Admin.Operator
 
   def index(conn, _params) do
     operators = Admin.list_operators()

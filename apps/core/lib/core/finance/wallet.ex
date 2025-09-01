@@ -1,14 +1,16 @@
-defmodule UmbrellaTrioLottoparWeb.Finance.Wallet do
+defmodule Core.Finance.Wallet do
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "wallets" do
-    field(:player_id, :string)
-    field(:retail_id, :string)
     field(:wallet_type, :string)
     field(:currency_code, :string)
     field(:total_cash, :decimal)
     field(:total_bonus, :decimal)
+
+    # Relacionamentos
+    belongs_to(:player, Core.Players.Player)
+    belongs_to(:retail, Core.Retail.Retail)
 
     timestamps()
   end

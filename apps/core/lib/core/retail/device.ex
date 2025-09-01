@@ -1,9 +1,8 @@
-defmodule UmbrellaTrioLottoparWeb.Retail.Device do
+defmodule Core.Retail.Device do
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "devices" do
-    field(:retail_id, :string)
     field(:device_type, :string)
     field(:status, :string)
     field(:activation_date, :date)
@@ -15,6 +14,9 @@ defmodule UmbrellaTrioLottoparWeb.Retail.Device do
     field(:mac_address, :string)
     field(:location, :string)
     field(:coordinates, :map)
+
+    # Relacionamentos
+    belongs_to(:retail, Core.Retail.Retail)
 
     timestamps()
   end
