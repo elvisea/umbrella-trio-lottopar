@@ -150,4 +150,90 @@ defmodule UmbrellaTrioLottoparWeb.FinanceTest do
       assert %Ecto.Changeset{} = Finance.change_deposit(deposit)
     end
   end
+
+  describe "withdraws" do
+    alias UmbrellaTrioLottoparWeb.Finance.Withdraw
+
+    import UmbrellaTrioLottoparWeb.FinanceFixtures
+
+    @invalid_attrs %{player_id: nil, op_id: nil, txn_amount: nil, tax_amount: nil, wallet_affected_amount: nil, txn_status: nil, txn_date: nil, txn_mode: nil, process_charges: nil, codigo_lottopar: nil, ref_txn_id: nil, service_charges: nil, tp_txn_id: nil, account: nil, confirmation_date: nil, currency_code: nil, retail_data: nil}
+
+    test "list_withdraws/0 returns all withdraws" do
+      withdraw = withdraw_fixture()
+      assert Finance.list_withdraws() == [withdraw]
+    end
+
+    test "get_withdraw!/1 returns the withdraw with given id" do
+      withdraw = withdraw_fixture()
+      assert Finance.get_withdraw!(withdraw.id) == withdraw
+    end
+
+    test "create_withdraw/1 with valid data creates a withdraw" do
+      valid_attrs = %{player_id: "some player_id", op_id: "some op_id", txn_amount: "120.5", tax_amount: "120.5", wallet_affected_amount: "120.5", txn_status: "some txn_status", txn_date: ~N[2025-08-31 14:34:00], txn_mode: "some txn_mode", process_charges: "some process_charges", codigo_lottopar: "some codigo_lottopar", ref_txn_id: "some ref_txn_id", service_charges: "some service_charges", tp_txn_id: "some tp_txn_id", account: "some account", confirmation_date: ~N[2025-08-31 14:34:00], currency_code: "some currency_code", retail_data: %{}}
+
+      assert {:ok, %Withdraw{} = withdraw} = Finance.create_withdraw(valid_attrs)
+      assert withdraw.player_id == "some player_id"
+      assert withdraw.op_id == "some op_id"
+      assert withdraw.txn_amount == Decimal.new("120.5")
+      assert withdraw.tax_amount == Decimal.new("120.5")
+      assert withdraw.wallet_affected_amount == Decimal.new("120.5")
+      assert withdraw.txn_status == "some txn_status"
+      assert withdraw.txn_date == ~N[2025-08-31 14:34:00]
+      assert withdraw.txn_mode == "some txn_mode"
+      assert withdraw.process_charges == "some process_charges"
+      assert withdraw.codigo_lottopar == "some codigo_lottopar"
+      assert withdraw.ref_txn_id == "some ref_txn_id"
+      assert withdraw.service_charges == "some service_charges"
+      assert withdraw.tp_txn_id == "some tp_txn_id"
+      assert withdraw.account == "some account"
+      assert withdraw.confirmation_date == ~N[2025-08-31 14:34:00]
+      assert withdraw.currency_code == "some currency_code"
+      assert withdraw.retail_data == %{}
+    end
+
+    test "create_withdraw/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Finance.create_withdraw(@invalid_attrs)
+    end
+
+    test "update_withdraw/2 with valid data updates the withdraw" do
+      withdraw = withdraw_fixture()
+      update_attrs = %{player_id: "some updated player_id", op_id: "some updated op_id", txn_amount: "456.7", tax_amount: "456.7", wallet_affected_amount: "456.7", txn_status: "some updated txn_status", txn_date: ~N[2025-09-01 14:34:00], txn_mode: "some updated txn_mode", process_charges: "some updated process_charges", codigo_lottopar: "some updated codigo_lottopar", ref_txn_id: "some updated ref_txn_id", service_charges: "some updated service_charges", tp_txn_id: "some updated tp_txn_id", account: "some updated account", confirmation_date: ~N[2025-09-01 14:34:00], currency_code: "some updated currency_code", retail_data: %{}}
+
+      assert {:ok, %Withdraw{} = withdraw} = Finance.update_withdraw(withdraw, update_attrs)
+      assert withdraw.player_id == "some updated player_id"
+      assert withdraw.op_id == "some updated op_id"
+      assert withdraw.txn_amount == Decimal.new("456.7")
+      assert withdraw.tax_amount == Decimal.new("456.7")
+      assert withdraw.wallet_affected_amount == Decimal.new("456.7")
+      assert withdraw.txn_status == "some updated txn_status"
+      assert withdraw.txn_date == ~N[2025-09-01 14:34:00]
+      assert withdraw.txn_mode == "some updated txn_mode"
+      assert withdraw.process_charges == "some updated process_charges"
+      assert withdraw.codigo_lottopar == "some updated codigo_lottopar"
+      assert withdraw.ref_txn_id == "some updated ref_txn_id"
+      assert withdraw.service_charges == "some updated service_charges"
+      assert withdraw.tp_txn_id == "some updated tp_txn_id"
+      assert withdraw.account == "some updated account"
+      assert withdraw.confirmation_date == ~N[2025-09-01 14:34:00]
+      assert withdraw.currency_code == "some updated currency_code"
+      assert withdraw.retail_data == %{}
+    end
+
+    test "update_withdraw/2 with invalid data returns error changeset" do
+      withdraw = withdraw_fixture()
+      assert {:error, %Ecto.Changeset{}} = Finance.update_withdraw(withdraw, @invalid_attrs)
+      assert withdraw == Finance.get_withdraw!(withdraw.id)
+    end
+
+    test "delete_withdraw/1 deletes the withdraw" do
+      withdraw = withdraw_fixture()
+      assert {:ok, %Withdraw{}} = Finance.delete_withdraw(withdraw)
+      assert_raise Ecto.NoResultsError, fn -> Finance.get_withdraw!(withdraw.id) end
+    end
+
+    test "change_withdraw/1 returns a withdraw changeset" do
+      withdraw = withdraw_fixture()
+      assert %Ecto.Changeset{} = Finance.change_withdraw(withdraw)
+    end
+  end
 end

@@ -51,4 +51,34 @@ defmodule UmbrellaTrioLottoparWeb.FinanceFixtures do
 
     deposit
   end
+
+  @doc """
+  Generate a withdraw.
+  """
+  def withdraw_fixture(attrs \\ %{}) do
+    {:ok, withdraw} =
+      attrs
+      |> Enum.into(%{
+        account: "some account",
+        codigo_lottopar: "some codigo_lottopar",
+        confirmation_date: ~N[2025-08-31 14:34:00],
+        currency_code: "some currency_code",
+        op_id: "some op_id",
+        player_id: "some player_id",
+        process_charges: "some process_charges",
+        ref_txn_id: "some ref_txn_id",
+        retail_data: %{},
+        service_charges: "some service_charges",
+        tax_amount: "120.5",
+        tp_txn_id: "some tp_txn_id",
+        txn_amount: "120.5",
+        txn_date: ~N[2025-08-31 14:34:00],
+        txn_mode: "some txn_mode",
+        txn_status: "some txn_status",
+        wallet_affected_amount: "120.5"
+      })
+      |> UmbrellaTrioLottoparWeb.Finance.create_withdraw()
+
+    withdraw
+  end
 end
