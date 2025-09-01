@@ -1,0 +1,34 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Withdraw {@withdraw.id}
+    <:subtitle>This is a withdraw record from your database.</:subtitle>
+    <:actions>
+      <.button navigate={~p"/withdraws"}>
+        <.icon name="hero-arrow-left" />
+      </.button>
+      <.button variant="primary" navigate={~p"/withdraws/#{@withdraw}/edit?return_to=show"}>
+        <.icon name="hero-pencil-square" /> Edit withdraw
+      </.button>
+    </:actions>
+  </.header>
+
+  <.list>
+    <:item title="Player">{@withdraw.player_id}</:item>
+    <:item title="Op">{@withdraw.op_id}</:item>
+    <:item title="Txn amount">{@withdraw.txn_amount}</:item>
+    <:item title="Tax amount">{@withdraw.tax_amount}</:item>
+    <:item title="Wallet affected amount">{@withdraw.wallet_affected_amount}</:item>
+    <:item title="Txn status">{@withdraw.txn_status}</:item>
+    <:item title="Txn date">{@withdraw.txn_date}</:item>
+    <:item title="Txn mode">{@withdraw.txn_mode}</:item>
+    <:item title="Process charges">{@withdraw.process_charges}</:item>
+    <:item title="Codigo lottopar">{@withdraw.codigo_lottopar}</:item>
+    <:item title="Ref txn">{@withdraw.ref_txn_id}</:item>
+    <:item title="Service charges">{@withdraw.service_charges}</:item>
+    <:item title="Tp txn">{@withdraw.tp_txn_id}</:item>
+    <:item title="Account">{@withdraw.account}</:item>
+    <:item title="Confirmation date">{@withdraw.confirmation_date}</:item>
+    <:item title="Currency code">{@withdraw.currency_code}</:item>
+    <:item title="Retail data">{@withdraw.retail_data}</:item>
+  </.list>
+</Layouts.app>

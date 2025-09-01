@@ -197,4 +197,100 @@ defmodule UmbrellaTrioLottoparWeb.Finance do
   def change_deposit(%Deposit{} = deposit, attrs \\ %{}) do
     Deposit.changeset(deposit, attrs)
   end
+
+  alias UmbrellaTrioLottoparWeb.Finance.Withdraw
+
+  @doc """
+  Returns the list of withdraws.
+
+  ## Examples
+
+      iex> list_withdraws()
+      [%Withdraw{}, ...]
+
+  """
+  def list_withdraws do
+    Repo.all(Withdraw)
+  end
+
+  @doc """
+  Gets a single withdraw.
+
+  Raises `Ecto.NoResultsError` if the Withdraw does not exist.
+
+  ## Examples
+
+      iex> get_withdraw!(123)
+      %Withdraw{}
+
+      iex> get_withdraw!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_withdraw!(id), do: Repo.get!(Withdraw, id)
+
+  @doc """
+  Creates a withdraw.
+
+  ## Examples
+
+      iex> create_withdraw(%{field: value})
+      {:ok, %Withdraw{}}
+
+      iex> create_withdraw(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_withdraw(attrs) do
+    %Withdraw{}
+    |> Withdraw.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a withdraw.
+
+  ## Examples
+
+      iex> update_withdraw(withdraw, %{field: new_value})
+      {:ok, %Withdraw{}}
+
+      iex> update_withdraw(withdraw, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_withdraw(%Withdraw{} = withdraw, attrs) do
+    withdraw
+    |> Withdraw.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a withdraw.
+
+  ## Examples
+
+      iex> delete_withdraw(withdraw)
+      {:ok, %Withdraw{}}
+
+      iex> delete_withdraw(withdraw)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_withdraw(%Withdraw{} = withdraw) do
+    Repo.delete(withdraw)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking withdraw changes.
+
+  ## Examples
+
+      iex> change_withdraw(withdraw)
+      %Ecto.Changeset{data: %Withdraw{}}
+
+  """
+  def change_withdraw(%Withdraw{} = withdraw, attrs \\ %{}) do
+    Withdraw.changeset(withdraw, attrs)
+  end
 end

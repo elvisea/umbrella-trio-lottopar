@@ -1,0 +1,8 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Edit Withdraw {@withdraw.id}
+    <:subtitle>Use this form to manage withdraw records in your database.</:subtitle>
+  </.header>
+
+  <.withdraw_form changeset={@changeset} action={~p"/withdraws/#{@withdraw}"} return_to={~p"/withdraws"} />
+</Layouts.app>

@@ -61,6 +61,7 @@ defmodule UmbrellaTrioLottoparWeb.Router do
     pipe_through :browser
 
     resources "/deposits", DepositController
+    resources "/withdraws", WithdrawController
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,41 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Listing Withdraws
+    <:actions>
+      <.button href={~p"/withdraws/new"}>
+        <.icon name="hero-plus" /> New Withdraw
+      </.button>
+    </:actions>
+  </.header>
+
+  <.table id="withdraws" rows={@withdraws} row_click={&JS.navigate(~p"/withdraws/#{&1}")}>
+    <:col :let={withdraw} label="Player">{withdraw.player_id}</:col>
+    <:col :let={withdraw} label="Op">{withdraw.op_id}</:col>
+    <:col :let={withdraw} label="Txn amount">{withdraw.txn_amount}</:col>
+    <:col :let={withdraw} label="Tax amount">{withdraw.tax_amount}</:col>
+    <:col :let={withdraw} label="Wallet affected amount">{withdraw.wallet_affected_amount}</:col>
+    <:col :let={withdraw} label="Txn status">{withdraw.txn_status}</:col>
+    <:col :let={withdraw} label="Txn date">{withdraw.txn_date}</:col>
+    <:col :let={withdraw} label="Txn mode">{withdraw.txn_mode}</:col>
+    <:col :let={withdraw} label="Process charges">{withdraw.process_charges}</:col>
+    <:col :let={withdraw} label="Codigo lottopar">{withdraw.codigo_lottopar}</:col>
+    <:col :let={withdraw} label="Ref txn">{withdraw.ref_txn_id}</:col>
+    <:col :let={withdraw} label="Service charges">{withdraw.service_charges}</:col>
+    <:col :let={withdraw} label="Tp txn">{withdraw.tp_txn_id}</:col>
+    <:col :let={withdraw} label="Account">{withdraw.account}</:col>
+    <:col :let={withdraw} label="Confirmation date">{withdraw.confirmation_date}</:col>
+    <:col :let={withdraw} label="Currency code">{withdraw.currency_code}</:col>
+    <:col :let={withdraw} label="Retail data">{withdraw.retail_data}</:col>
+    <:action :let={withdraw}>
+      <div class="sr-only">
+        <.link navigate={~p"/withdraws/#{withdraw}"}>Show</.link>
+      </div>
+      <.link navigate={~p"/withdraws/#{withdraw}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={withdraw}>
+      <.link href={~p"/withdraws/#{withdraw}"} method="delete" data-confirm="Are you sure?">
+        Delete
+      </.link>
+    </:action>
+  </.table>
+</Layouts.app>
