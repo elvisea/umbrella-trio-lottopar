@@ -107,6 +107,8 @@ O objetivo desta tarefa é configurar a arquitetura de projeto **"umbrella"** no
 A arquitetura final será composta pelos seguintes `apps`:
 
   * **`apps/core`**: Contém todos os schemas do Ecto e a lógica de negócio principal (contextos).
+  * **`apps/umbrella_trio_lottopar`**: Repositório centralizado e migrações do banco de dados.
+  * **`apps/umbrella_trio_lottopar_web`**: Aplicação web principal com controllers, views e templates.
   * **`apps/auth`**: Responsável pela autenticação e controle de acesso dos usuários.
   * **`apps/api`**: Gerencia a API JSON para integrações externas.
   * **`apps/backoffice`**: O frontend administrativo, construído com Phoenix LiveView.
@@ -115,7 +117,7 @@ A arquitetura final será composta pelos seguintes `apps`:
 **Objetivos**
 
   * Configurar a estrutura de pastas da aplicação `umbrella`.
-  * Criar os cinco `apps` conforme a especificação.
+  * Criar os sete `apps` conforme a especificação.
   * Estabelecer a comunicação entre os `apps` para futuras implementações.
 
 **Passos da Tarefa**
@@ -128,7 +130,15 @@ A arquitetura final será composta pelos seguintes `apps`:
       - Crie a aplicação `core`:
         ```bash
         cd <project_name>/apps
-        mix new core
+        mix phx.new core --no-html --no-json --no-live --no-ecto
+        ```
+      - Crie a aplicação `umbrella_trio_lottopar` (repositório):
+        ```bash
+        mix new umbrella_trio_lottopar
+        ```
+      - Crie a aplicação `umbrella_trio_lottopar_web` (aplicação web principal):
+        ```bash
+        mix phx.new umbrella_trio_lottopar_web
         ```
       - Crie a aplicação `auth`:
         ```bash
@@ -153,7 +163,7 @@ A arquitetura final será composta pelos seguintes `apps`:
 **Resultado Esperado**
 
   * A estrutura de diretórios do projeto `umbrella` criada e organizada.
-  * Os cinco `apps` (core, auth, api, backoffice, audit) criados e prontos para receber as próximas implementações.
+  * Os sete `apps` (core, umbrella_trio_lottopar, umbrella_trio_lottopar_web, auth, api, backoffice, audit) criados e prontos para receber as próximas implementações.
   * O projeto compila sem erros.
 
 -----
