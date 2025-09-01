@@ -1,0 +1,12 @@
+<.form :let={f} for={@changeset} action={@action}>
+  <.input field={f[:op_id]} type="text" label="Op" />
+  <.input field={f[:user_type]} type="text" label="User type" />
+  <.input field={f[:status]} type="text" label="Status" />
+  <.input field={f[:username]} type="text" label="Username" />
+  <.input field={f[:password]} type="text" label="Password" />
+  <.input field={f[:otp]} type="text" label="Otp" />
+  <footer>
+    <.button variant="primary">Save User</.button>
+    <.button :if={@return_to} href={@return_to}>Cancel</.button>
+  </footer>
+</.form>

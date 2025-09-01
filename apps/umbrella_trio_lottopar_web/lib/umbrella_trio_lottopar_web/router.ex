@@ -25,6 +25,7 @@ defmodule UmbrellaTrioLottoparWeb.Router do
     pipe_through :browser
 
     resources "/operators", OperatorController
+    resources "/users", UserController
   end
 
   # Players scope
