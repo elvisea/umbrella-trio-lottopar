@@ -11,30 +11,30 @@
 import Config
 
 # Configure Mix tasks and generators
-config :umbrella_trio_lottopar,
-  ecto_repos: [UmbrellaTrioLottopar.Repo]
+config :repo,
+  ecto_repos: [Repo.Repo]
 
 # Configures the mailer
-config :umbrella_trio_lottopar, UmbrellaTrioLottopar.Mailer, adapter: Swoosh.Adapters.Local
+config :repo, Repo.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.25.4",
-  umbrella_trio_lottopar_web: [
+  web: [
     args: ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets),
-    cd: Path.expand("../apps/umbrella_trio_lottopar_web/assets", __DIR__),
+    cd: Path.expand("../apps/web/assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "4.1.7",
-  umbrella_trio_lottopar_web: [
+  web: [
     args: ~w(
       --input=css/app.css
       --output=../priv/static/assets/app.css
     ),
-    cd: Path.expand("../apps/umbrella_trio_lottopar_web/assets", __DIR__)
+    cd: Path.expand("../apps/web/assets", __DIR__)
   ]
 
 # Configures Elixir's Logger
@@ -46,8 +46,7 @@ config :logger, :default_formatter,
 config :phoenix, :json_library, Jason
 
 # Configure LiveView signing salt
-config :umbrella_trio_lottopar_web, UmbrellaTrioLottoparWeb.Endpoint,
-  live_view: [signing_salt: "GGE4O5hVC58FGg5E"]
+config :web, Web.Endpoint, live_view: [signing_salt: "GGE4O5hVC58FGg5E"]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
