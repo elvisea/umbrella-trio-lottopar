@@ -1,0 +1,8 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    New Wager
+    <:subtitle>Use this form to manage wager records in your database.</:subtitle>
+  </.header>
+
+  <.wager_form changeset={@changeset} action={~p"/games/wagers"} return_to={~p"/games/wagers"} />
+</Layouts.app>

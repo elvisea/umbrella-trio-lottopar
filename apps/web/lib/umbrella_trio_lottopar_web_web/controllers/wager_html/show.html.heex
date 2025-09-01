@@ -1,0 +1,39 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Wager {@wager.id}
+    <:subtitle>This is a wager record from your database.</:subtitle>
+    <:actions>
+      <.button navigate={~p"/games/wagers"}>
+        <.icon name="hero-arrow-left" />
+      </.button>
+      <.button variant="primary" navigate={~p"/games/wagers/#{@wager}/edit?return_to=show"}>
+        <.icon name="hero-pencil-square" /> Edit wager
+      </.button>
+    </:actions>
+  </.header>
+
+  <.list>
+    <:item title="Player">{@wager.player_id}</:item>
+    <:item title="Op">{@wager.op_id}</:item>
+    <:item title="Txn amount">{@wager.txn_amount}</:item>
+    <:item title="Bonus amount">{@wager.bonus_amount}</:item>
+    <:item title="Cash amount">{@wager.cash_amount}</:item>
+    <:item title="Tax amount">{@wager.tax_amount}</:item>
+    <:item title="Txn status">{@wager.txn_status}</:item>
+    <:item title="Txn date">{@wager.txn_date}</:item>
+    <:item title="Txn mode">{@wager.txn_mode}</:item>
+    <:item title="Process charges">{@wager.process_charges}</:item>
+    <:item title="Codigo lottopar">{@wager.codigo_lottopar}</:item>
+    <:item title="Ref txn">{@wager.ref_txn_id}</:item>
+    <:item title="Service charges">{@wager.service_charges}</:item>
+    <:item title="Tp txn">{@wager.tp_txn_id}</:item>
+    <:item title="Sale transaction">{@wager.sale_transaction_id}</:item>
+    <:item title="Ticket number">{@wager.ticket_number}</:item>
+    <:item title="Game">{@wager.game_id}</:item>
+    <:item title="Game type">{@wager.game_type}</:item>
+    <:item title="Game name">{@wager.game_name}</:item>
+    <:item title="Game data">{@wager.game_data}</:item>
+    <:item title="Event">{@wager.event}</:item>
+    <:item title="Retail data">{@wager.retail_data}</:item>
+  </.list>
+</Layouts.app>
