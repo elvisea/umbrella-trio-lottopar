@@ -1,7 +1,7 @@
 import Config
 
 # Configure your database
-config :umbrella_trio_lottopar, UmbrellaTrioLottopar.Repo,
+config :repo, Repo.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
@@ -12,7 +12,7 @@ config :umbrella_trio_lottopar, UmbrellaTrioLottopar.Repo,
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
-config :umbrella_trio_lottopar_web, UmbrellaTrioLottoparWeb.Endpoint,
+config :web, Web.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: String.to_integer(System.get_env("PORT") || "4000")],
@@ -20,26 +20,26 @@ config :umbrella_trio_lottopar_web, UmbrellaTrioLottoparWeb.Endpoint,
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "4Nx4Am8+EDYZ0TsAlVq8ULD+wD34Fptr6IdIgsvMRH7RWrbWqQgqn3IRHKC4o2ZK",
-  pubsub_server: UmbrellaTrioLottoparWeb.PubSub,
+  pubsub_server: Web.PubSub,
   watchers: [
     esbuild:
-      {Esbuild, :install_and_run, [:umbrella_trio_lottopar_web, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:umbrella_trio_lottopar_web, ~w(--watch)]}
+      {Esbuild, :install_and_run, [:web, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:web, ~w(--watch)]}
   ]
 
 # Watch static and templates for browser reloading.
-config :umbrella_trio_lottopar_web, UmbrellaTrioLottoparWeb.Endpoint,
+config :web, Web.Endpoint,
   live_reload: [
     web_console_logger: true,
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/umbrella_trio_lottopar_web/(?:controllers|live|components|router)/?.*\.(ex|heex)$"
+      ~r"lib/web/(?:controllers|live|components|router)/?.*\.(ex|heex)$"
     ]
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :umbrella_trio_lottopar_web, dev_routes: true
+config :web, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :default_formatter, format: "[$level] $message\n"

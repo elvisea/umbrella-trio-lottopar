@@ -1,12 +1,12 @@
-defmodule UmbrellaTrioLottoparWeb.Admin do
+defmodule Web.Admin do
   @moduledoc """
   The Admin context.
   """
 
   import Ecto.Query, warn: false
-  alias UmbrellaTrioLottoparWeb.Repo
+  alias Web.Repo
 
-  alias UmbrellaTrioLottoparWeb.Admin.User
+  alias Web.Admin.User
 
   @doc """
   Returns the list of users.
