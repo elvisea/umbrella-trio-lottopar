@@ -1,0 +1,30 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Listing Users
+    <:actions>
+      <.button href={~p"/users/new"}>
+        <.icon name="hero-plus" /> New User
+      </.button>
+    </:actions>
+  </.header>
+
+  <.table id="users" rows={@users} row_click={&JS.navigate(~p"/users/#{&1}")}>
+    <:col :let={user} label="Op">{user.op_id}</:col>
+    <:col :let={user} label="User type">{user.user_type}</:col>
+    <:col :let={user} label="Status">{user.status}</:col>
+    <:col :let={user} label="Username">{user.username}</:col>
+    <:col :let={user} label="Password">{user.password}</:col>
+    <:col :let={user} label="Otp">{user.otp}</:col>
+    <:action :let={user}>
+      <div class="sr-only">
+        <.link navigate={~p"/users/#{user}"}>Show</.link>
+      </div>
+      <.link navigate={~p"/users/#{user}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={user}>
+      <.link href={~p"/users/#{user}"} method="delete" data-confirm="Are you sure?">
+        Delete
+      </.link>
+    </:action>
+  </.table>
+</Layouts.app>

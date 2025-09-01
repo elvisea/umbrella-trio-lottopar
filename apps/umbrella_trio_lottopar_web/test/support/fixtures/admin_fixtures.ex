@@ -22,4 +22,23 @@ defmodule UmbrellaTrioLottoparWeb.AdminFixtures do
 
     operator
   end
+
+  @doc """
+  Generate a user.
+  """
+  def user_fixture(attrs \\ %{}) do
+    {:ok, user} =
+      attrs
+      |> Enum.into(%{
+        op_id: "some op_id",
+        otp: "some otp",
+        password: "some password",
+        status: "some status",
+        user_type: "some user_type",
+        username: "some username"
+      })
+      |> UmbrellaTrioLottoparWeb.Admin.create_user()
+
+    user
+  end
 end
