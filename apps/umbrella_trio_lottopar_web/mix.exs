@@ -58,6 +58,7 @@ defmodule UmbrellaTrioLottoparWeb.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.26"},
       {:umbrella_trio_lottopar, in_umbrella: true},
+      {:core, in_umbrella: true},
       {:jason, "~> 1.2"},
       {:bandit, "~> 1.5"}
     ]
