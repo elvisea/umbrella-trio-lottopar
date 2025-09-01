@@ -2,7 +2,7 @@ defmodule UmbrellaTrioLottoparWeb.DepositController do
   use UmbrellaTrioLottoparWeb, :controller
 
   alias UmbrellaTrioLottoparWeb.Finance
-  alias UmbrellaTrioLottoparWeb.Finance.Deposit
+  alias Core.Finance.Deposit
 
   def index(conn, _params) do
     deposits = Finance.list_deposits()

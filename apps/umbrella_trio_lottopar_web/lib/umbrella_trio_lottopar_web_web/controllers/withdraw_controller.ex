@@ -2,7 +2,7 @@ defmodule UmbrellaTrioLottoparWeb.WithdrawController do
   use UmbrellaTrioLottoparWeb, :controller
 
   alias UmbrellaTrioLottoparWeb.Finance
-  alias UmbrellaTrioLottoparWeb.Finance.Withdraw
+  alias Core.Finance.Withdraw
 
   def index(conn, _params) do
     withdraws = Finance.list_withdraws()

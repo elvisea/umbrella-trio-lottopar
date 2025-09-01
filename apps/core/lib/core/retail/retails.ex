@@ -1,9 +1,8 @@
-defmodule UmbrellaTrioLottoparWeb.Retail.Retails do
+defmodule Core.Retail.Retail do
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "retails" do
-    field(:op_id, :string)
     field(:name, :string)
     field(:tax_id, :string)
     field(:status, :string)
@@ -16,14 +15,18 @@ defmodule UmbrellaTrioLottoparWeb.Retail.Retails do
     field(:email, :string)
     field(:manager_name, :string)
 
+    # Relacionamentos
+    belongs_to(:operator, Core.Admin.Operator)
+    has_many(:devices, Core.Retail.Device)
+
     timestamps()
   end
 
   @doc false
-  def changeset(retails, attrs) do
-    retails
+  def changeset(retail, attrs) do
+    retail
     |> cast(attrs, [
-      :op_id,
+      :operator_id,
       :name,
       :tax_id,
       :status,
@@ -37,7 +40,7 @@ defmodule UmbrellaTrioLottoparWeb.Retail.Retails do
       :manager_name
     ])
     |> validate_required([
-      :op_id,
+      :operator_id,
       :name,
       :tax_id,
       :status,

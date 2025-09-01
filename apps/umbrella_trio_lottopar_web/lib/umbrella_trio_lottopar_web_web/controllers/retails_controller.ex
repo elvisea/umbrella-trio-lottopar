@@ -2,7 +2,7 @@ defmodule UmbrellaTrioLottoparWeb.RetailsController do
   use UmbrellaTrioLottoparWeb, :controller
 
   alias UmbrellaTrioLottoparWeb.Retail
-  alias UmbrellaTrioLottoparWeb.Retail.Retails
+  alias Core.Retail.Retail
 
   def index(conn, _params) do
     retails = Retail.list_retails()
@@ -10,16 +10,16 @@ defmodule UmbrellaTrioLottoparWeb.RetailsController do
   end
 
   def new(conn, _params) do
-    changeset = Retail.change_retails(%Retails{})
+    changeset = Retail.change_retail(%Retail{})
     render(conn, :new, changeset: changeset)
   end
 
   def create(conn, %{"retails" => retails_params}) do
-    case Retail.create_retails(retails_params) do
-      {:ok, retails} ->
+    case Retail.create_retail(retails_params) do
+      {:ok, retail} ->
         conn
-        |> put_flash(:info, "Retails created successfully.")
-        |> redirect(to: ~p"/retails/#{retails}")
+        |> put_flash(:info, "Retail created successfully.")
+        |> redirect(to: ~p"/retails/#{retail}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, :new, changeset: changeset)
@@ -27,36 +27,36 @@ defmodule UmbrellaTrioLottoparWeb.RetailsController do
   end
 
   def show(conn, %{"id" => id}) do
-    retails = Retail.get_retails!(id)
-    render(conn, :show, retails: retails)
+    retail = Retail.get_retail!(id)
+    render(conn, :show, retails: retail)
   end
 
   def edit(conn, %{"id" => id}) do
-    retails = Retail.get_retails!(id)
-    changeset = Retail.change_retails(retails)
-    render(conn, :edit, retails: retails, changeset: changeset)
+    retail = Retail.get_retail!(id)
+    changeset = Retail.change_retail(retail)
+    render(conn, :edit, retails: retail, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "retails" => retails_params}) do
-    retails = Retail.get_retails!(id)
+    retail = Retail.get_retail!(id)
 
-    case Retail.update_retails(retails, retails_params) do
-      {:ok, retails} ->
+    case Retail.update_retail(retail, retails_params) do
+      {:ok, retail} ->
         conn
-        |> put_flash(:info, "Retails updated successfully.")
-        |> redirect(to: ~p"/retails/#{retails}")
+        |> put_flash(:info, "Retail updated successfully.")
+        |> redirect(to: ~p"/retails/#{retail}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, :edit, retails: retails, changeset: changeset)
+        render(conn, :edit, retails: retail, changeset: changeset)
     end
   end
 
   def delete(conn, %{"id" => id}) do
-    retails = Retail.get_retails!(id)
-    {:ok, _retails} = Retail.delete_retails(retails)
+    retail = Retail.get_retail!(id)
+    {:ok, _retail} = Retail.delete_retail(retail)
 
     conn
-    |> put_flash(:info, "Retails deleted successfully.")
+    |> put_flash(:info, "Retail deleted successfully.")
     |> redirect(to: ~p"/retails")
   end
 end

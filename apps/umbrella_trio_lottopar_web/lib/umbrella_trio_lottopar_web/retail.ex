@@ -6,7 +6,7 @@ defmodule UmbrellaTrioLottoparWeb.Retail do
   import Ecto.Query, warn: false
   alias UmbrellaTrioLottoparWeb.Repo
 
-  alias UmbrellaTrioLottoparWeb.Retail.Retails
+  alias Core.Retail.Retail
 
   @doc """
   Returns the list of retails.
@@ -14,95 +14,95 @@ defmodule UmbrellaTrioLottoparWeb.Retail do
   ## Examples
 
       iex> list_retails()
-      [%Retails{}, ...]
+      [%Retail{}, ...]
 
   """
   def list_retails do
-    Repo.all(Retails)
+    Repo.all(Retail)
   end
 
   @doc """
-  Gets a single retails.
+  Gets a single retail.
 
-  Raises `Ecto.NoResultsError` if the Retails does not exist.
+  Raises `Ecto.NoResultsError` if the Retail does not exist.
 
   ## Examples
 
-      iex> get_retails!(123)
-      %Retails{}
+      iex> get_retail!(123)
+      %Retail{}
 
-      iex> get_retails!(456)
+      iex> get_retail!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_retails!(id), do: Repo.get!(Retails, id)
+  def get_retail!(id), do: Repo.get!(Retail, id)
 
   @doc """
-  Creates a retails.
+  Creates a retail.
 
   ## Examples
 
-      iex> create_retails(%{field: value})
-      {:ok, %Retails{}}
+      iex> create_retail(%{field: value})
+      {:ok, %Retail{}}
 
-      iex> create_retails(%{field: bad_value})
+      iex> create_retail(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_retails(attrs) do
-    %Retails{}
-    |> Retails.changeset(attrs)
+  def create_retail(attrs) do
+    %Retail{}
+    |> Retail.changeset(attrs)
     |> Repo.insert()
   end
 
   @doc """
-  Updates a retails.
+  Updates a retail.
 
   ## Examples
 
-      iex> update_retails(retails, %{field: new_value})
-      {:ok, %Retails{}}
+      iex> update_retail(retail, %{field: new_value})
+      {:ok, %Retail{}}
 
-      iex> update_retails(retails, %{field: bad_value})
+      iex> update_retail(retail, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_retails(%Retails{} = retails, attrs) do
-    retails
-    |> Retails.changeset(attrs)
+  def update_retail(%Retail{} = retail, attrs) do
+    retail
+    |> Retail.changeset(attrs)
     |> Repo.update()
   end
 
   @doc """
-  Deletes a retails.
+  Deletes a retail.
 
   ## Examples
 
-      iex> delete_retails(retails)
-      {:ok, %Retails{}}
+      iex> delete_retail(retail)
+      {:ok, %Retail{}}
 
-      iex> delete_retails(retails)
+      iex> delete_retail(retail)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_retails(%Retails{} = retails) do
-    Repo.delete(retails)
+  def delete_retail(%Retail{} = retail) do
+    Repo.delete(retail)
   end
 
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking retails changes.
+  Returns an `%Ecto.Changeset{}` for tracking retail changes.
 
   ## Examples
 
-      iex> change_retails(retails)
-      %Ecto.Changeset{data: %Retails{}}
+      iex> change_retail(retail)
+      %Ecto.Changeset{data: %Retail{}}
 
   """
-  def change_retails(%Retails{} = retails, attrs \\ %{}) do
-    Retails.changeset(retails, attrs)
+  def change_retail(%Retail{} = retail, attrs \\ %{}) do
+    Retail.changeset(retail, attrs)
   end
 
-  alias UmbrellaTrioLottoparWeb.Retail.Device
+  alias Core.Retail.Device
 
   @doc """
   Returns the list of devices.

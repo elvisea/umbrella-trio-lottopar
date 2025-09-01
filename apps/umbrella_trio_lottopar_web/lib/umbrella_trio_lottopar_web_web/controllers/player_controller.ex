@@ -2,7 +2,7 @@ defmodule UmbrellaTrioLottoparWeb.PlayerController do
   use UmbrellaTrioLottoparWeb, :controller
 
   alias UmbrellaTrioLottoparWeb.Players
-  alias UmbrellaTrioLottoparWeb.Players.Player
+  alias Core.Players.Player
 
   def index(conn, _params) do
     players = Players.list_players()

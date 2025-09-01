@@ -1,10 +1,8 @@
-defmodule UmbrellaTrioLottoparWeb.Finance.Deposit do
+defmodule Core.Finance.Withdraw do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "deposits" do
-    field(:player_id, :string)
-    field(:op_id, :string)
+  schema "withdraws" do
     field(:txn_amount, :decimal)
     field(:tax_amount, :decimal)
     field(:wallet_affected_amount, :decimal)
@@ -14,21 +12,26 @@ defmodule UmbrellaTrioLottoparWeb.Finance.Deposit do
     field(:process_charges, :string)
     field(:codigo_lottopar, :string)
     field(:ref_txn_id, :string)
-    field(:payment_type, :string)
-    field(:sub_payment_type, :string)
     field(:service_charges, :string)
     field(:tp_txn_id, :string)
+    field(:account, :string)
+    field(:confirmation_date, :naive_datetime)
+    field(:currency_code, :string)
     field(:retail_data, :map)
+
+    # Relacionamentos
+    belongs_to(:player, Core.Players.Player)
+    belongs_to(:operator, Core.Admin.Operator)
 
     timestamps()
   end
 
   @doc false
-  def changeset(deposit, attrs) do
-    deposit
+  def changeset(withdraw, attrs) do
+    withdraw
     |> cast(attrs, [
       :player_id,
-      :op_id,
+      :operator_id,
       :txn_amount,
       :tax_amount,
       :wallet_affected_amount,
@@ -38,15 +41,16 @@ defmodule UmbrellaTrioLottoparWeb.Finance.Deposit do
       :process_charges,
       :codigo_lottopar,
       :ref_txn_id,
-      :payment_type,
-      :sub_payment_type,
       :service_charges,
       :tp_txn_id,
+      :account,
+      :confirmation_date,
+      :currency_code,
       :retail_data
     ])
     |> validate_required([
       :player_id,
-      :op_id,
+      :operator_id,
       :txn_amount,
       :tax_amount,
       :wallet_affected_amount,
@@ -56,10 +60,11 @@ defmodule UmbrellaTrioLottoparWeb.Finance.Deposit do
       :process_charges,
       :codigo_lottopar,
       :ref_txn_id,
-      :payment_type,
-      :sub_payment_type,
       :service_charges,
-      :tp_txn_id
+      :tp_txn_id,
+      :account,
+      :confirmation_date,
+      :currency_code
     ])
   end
 end

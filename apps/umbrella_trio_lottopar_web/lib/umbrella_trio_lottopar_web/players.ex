@@ -6,7 +6,7 @@ defmodule UmbrellaTrioLottoparWeb.Players do
   import Ecto.Query, warn: false
   alias UmbrellaTrioLottoparWeb.Repo
 
-  alias UmbrellaTrioLottoparWeb.Players.Player
+  alias Core.Players.Player
 
   @doc """
   Returns the list of players.

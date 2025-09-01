@@ -2,7 +2,7 @@ defmodule UmbrellaTrioLottoparWeb.DeviceController do
   use UmbrellaTrioLottoparWeb, :controller
 
   alias UmbrellaTrioLottoparWeb.Retail
-  alias UmbrellaTrioLottoparWeb.Retail.Device
+  alias Core.Retail.Device
 
   def index(conn, _params) do
     devices = Retail.list_devices()
