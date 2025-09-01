@@ -7,6 +7,8 @@ Projeto desenvolvido com arquitetura **umbrella** no Phoenix Framework, seguindo
 O projeto utiliza a arquitetura **umbrella** do Phoenix, dividindo a aplicação em várias aplicações menores (`apps`), cada uma com um propósito específico:
 
 - **`apps/core`**: Contém todos os schemas do Ecto e a lógica de negócio principal (contextos)
+- **`apps/umbrella_trio_lottopar`**: Repositório centralizado e migrações do banco de dados
+- **`apps/umbrella_trio_lottopar_web`**: Aplicação web principal com controllers, views e templates
 - **`apps/auth`**: Responsável pela autenticação e controle de acesso dos usuários
 - **`apps/api`**: Gerencia a API JSON para integrações externas
 - **`apps/backoffice`**: O frontend administrativo, construído com Phoenix LiveView
@@ -17,15 +19,46 @@ O projeto utiliza a arquitetura **umbrella** do Phoenix, dividindo a aplicação
 ```
 umbrella/
 ├── apps/
-│   ├── core/           # Schemas e lógica de negócio
-│   ├── auth/           # Autenticação
-│   ├── api/            # API externa
-│   ├── backoffice/     # Interface administrativa
-│   └── audit/          # Auditoria e logs
-├── config/             # Configurações
-├── mix.exs             # Configuração principal
-└── .gitignore          # Arquivos ignorados
+│   ├── core/                           # 🧠 Schemas Ecto e Contextos Centralizados
+│   │   ├── lib/core/admin/            # 👥 Admin schemas (Operator, User)
+│   │   ├── lib/core/players/          # 🎮 Player schemas
+│   │   ├── lib/core/retail/           # 🏪 Retail schemas (Retail, Device)
+│   │   ├── lib/core/finance/          # 💰 Finance schemas (Deposit, Withdraw, Wallet)
+│   │   └── lib/core/                  # 🔧 Contextos (Admin, Players, Retail, Finance)
+│   ├── umbrella_trio_lottopar/        # 🗄️ Repositório e Migrações
+│   │   └── priv/repo/migrations/      # 📊 Todas as migrações do banco
+│   ├── umbrella_trio_lottopar_web/    # 🌐 Aplicação Web Principal
+│   │   ├── lib/umbrella_trio_lottopar_web/controllers/  # 🎮 Controllers
+│   │   ├── lib/umbrella_trio_lottopar_web/views/        # 👁️ Views
+│   │   ├── lib/umbrella_trio_lottopar_web/templates/    # 🎨 Templates HTML
+│   │   ├── assets/                    # 🎨 CSS/JS/Tailwind
+│   │   └── priv/                      # ⚙️ Configurações web
+│   ├── auth/                          # 🔐 Autenticação (a ser implementado)
+│   ├── api/                           # 📡 API externa (a ser implementado)
+│   ├── backoffice/                    # 🖥️ Interface administrativa (a ser implementado)
+│   └── audit/                         # 📋 Auditoria (a ser implementado)
+├── config/                            # ⚙️ Configurações do projeto
+├── mix.exs                            # 📦 Configuração principal
+└── .gitignore                         # 🚫 Arquivos ignorados
 ```
+
+### 🎯 **Explicação da Nova Arquitetura:**
+
+**1. Centralização de Schemas (`apps/core`):**
+- Todos os schemas Ecto estão centralizados em `apps/core`
+- Organizados por domínio: `admin`, `players`, `retail`, `finance`
+- Facilita reutilização entre diferentes aplicações
+
+**2. Separação de Responsabilidades:**
+- **`core`**: Schemas e lógica de negócio
+- **`umbrella_trio_lottopar`**: Acesso ao banco e migrações
+- **`umbrella_trio_lottopar_web`**: Interface web e controllers
+
+**3. Benefícios da Nova Estrutura:**
+- ✅ **Reutilização**: Schemas podem ser usados por qualquer app
+- ✅ **Manutenibilidade**: Mudanças em schemas afetam apenas o core
+- ✅ **Escalabilidade**: Novos apps podem facilmente usar schemas existentes
+- ✅ **Organização**: Separação clara entre dados e apresentação
 
 ## 🎯 **Funcionalidades Implementadas**
 
@@ -40,6 +73,64 @@ umbrella/
 - Controller, views e templates implementados
 - Rotas configuradas em `/admin/operators`
 - CRUD completo funcionando
+
+### ✅ **TASK_009 - Entidade Withdraw**
+- Entidade Withdraw criada no contexto Finance
+- Controller, views e templates implementados
+- Rotas configuradas em `/finance/withdraws`
+- CRUD completo funcionando
+
+### ✅ **TASK_049 - Docker Compose**
+- Arquivo `docker-compose.yml` criado
+- PostgreSQL e pgAdmin configurados
+- Variáveis de ambiente documentadas
+- Instruções de uso adicionadas ao README
+
+### ✅ **TASK_051 - Formatação de Código**
+- `mix format` executado em todo o projeto
+- Código formatado seguindo padrões Elixir
+- Credo: 0 issues de qualidade
+
+### ✅ **TASK_052 - Refatoração da Estrutura**
+- Schemas movidos para `apps/core`
+- Estrutura reorganizada seguindo melhores práticas
+- Separação clara entre schemas e apresentação
+- Arquitetura umbrella otimizada
+
+### ✅ **TASK_053 - Correção de Rotas**
+- Todas as rotas não funcionais corrigidas
+- Schemas configurados corretamente
+- Projeto funcionando perfeitamente
+- Rotas principais testadas e funcionando
+
+### 🚧 **TASKs em Andamento:**
+- **TASK_054**: Atualização do README com estrutura atual (em execução)
+
+### 📋 **TASKs Pendentes:**
+- **TASK_020**: Implementar Endpoints de API (apps/api)
+- **TASK_021**: Implementar Rastreamento de Auditoria (apps/audit)
+- **TASK_017**: Criar Backoffice Base e Layout (apps/backoffice)
+- **TASK_018**: Implementar Gestão de Operadores (apps/backoffice)
+- **TASK_019**: Implementar Gestão de Varejistas e Dispositivos (apps/backoffice)
+- **TASK_016**: Implementar Autenticação e 2FA (apps/auth)
+
+## 🌐 **Rotas Disponíveis Atualmente**
+
+### ✅ **Rotas Funcionais (HTTP 200):**
+- **`/`** - Página inicial
+- **`/players`** - Lista de jogadores
+- **`/admin/users`** - Lista de usuários administradores
+- **`/retails`** - Lista de varejistas
+- **`/finance/deposits`** - Lista de depósitos
+- **`/finance/withdraws`** - Lista de saques
+- **`/dev/dashboard/home`** - Dashboard de desenvolvimento
+
+### 🔧 **Rotas de Desenvolvimento:**
+- **`/dev/dashboard`** - LiveDashboard do Phoenix
+- **`/dev/dashboard/home`** - Página inicial do dashboard
+
+### 📊 **Status das Rotas:**
+Todas as rotas principais estão funcionando corretamente após as correções da TASK_053.
 
 ## 🚀 **Como Executar**
 
@@ -90,8 +181,12 @@ mix phx.server
 ```
 
 ### **Acessos**
-- **Backoffice**: http://localhost:4000
-- **Admin Operators**: http://localhost:4000/admin/operators
+- **Página Inicial**: http://localhost:4000
+- **Jogadores**: http://localhost:4000/players
+- **Usuários Admin**: http://localhost:4000/admin/users
+- **Varejistas**: http://localhost:4000/retails
+- **Depósitos**: http://localhost:4000/finance/deposits
+- **Saques**: http://localhost:4000/finance/withdraws
 - **LiveDashboard**: http://localhost:4000/dev/dashboard
 - **pgAdmin**: http://localhost:5050 (quando usando Docker)
 
