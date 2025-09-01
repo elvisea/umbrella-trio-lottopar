@@ -1,0 +1,40 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Listing Deposits
+    <:actions>
+      <.button href={~p"/deposits/new"}>
+        <.icon name="hero-plus" /> New Deposit
+      </.button>
+    </:actions>
+  </.header>
+
+  <.table id="deposits" rows={@deposits} row_click={&JS.navigate(~p"/deposits/#{&1}")}>
+    <:col :let={deposit} label="Player">{deposit.player_id}</:col>
+    <:col :let={deposit} label="Op">{deposit.op_id}</:col>
+    <:col :let={deposit} label="Txn amount">{deposit.txn_amount}</:col>
+    <:col :let={deposit} label="Tax amount">{deposit.tax_amount}</:col>
+    <:col :let={deposit} label="Wallet affected amount">{deposit.wallet_affected_amount}</:col>
+    <:col :let={deposit} label="Txn status">{deposit.txn_status}</:col>
+    <:col :let={deposit} label="Txn date">{deposit.txn_date}</:col>
+    <:col :let={deposit} label="Txn mode">{deposit.txn_mode}</:col>
+    <:col :let={deposit} label="Process charges">{deposit.process_charges}</:col>
+    <:col :let={deposit} label="Codigo lottopar">{deposit.codigo_lottopar}</:col>
+    <:col :let={deposit} label="Ref txn">{deposit.ref_txn_id}</:col>
+    <:col :let={deposit} label="Payment type">{deposit.payment_type}</:col>
+    <:col :let={deposit} label="Sub payment type">{deposit.sub_payment_type}</:col>
+    <:col :let={deposit} label="Service charges">{deposit.service_charges}</:col>
+    <:col :let={deposit} label="Tp txn">{deposit.tp_txn_id}</:col>
+    <:col :let={deposit} label="Retail data">{deposit.retail_data}</:col>
+    <:action :let={deposit}>
+      <div class="sr-only">
+        <.link navigate={~p"/deposits/#{deposit}"}>Show</.link>
+      </div>
+      <.link navigate={~p"/deposits/#{deposit}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={deposit}>
+      <.link href={~p"/deposits/#{deposit}"} method="delete" data-confirm="Are you sure?">
+        Delete
+      </.link>
+    </:action>
+  </.table>
+</Layouts.app>

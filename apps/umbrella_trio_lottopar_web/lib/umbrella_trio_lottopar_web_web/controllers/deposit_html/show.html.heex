@@ -1,0 +1,33 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Deposit {@deposit.id}
+    <:subtitle>This is a deposit record from your database.</:subtitle>
+    <:actions>
+      <.button navigate={~p"/deposits"}>
+        <.icon name="hero-arrow-left" />
+      </.button>
+      <.button variant="primary" navigate={~p"/deposits/#{@deposit}/edit?return_to=show"}>
+        <.icon name="hero-pencil-square" /> Edit deposit
+      </.button>
+    </:actions>
+  </.header>
+
+  <.list>
+    <:item title="Player">{@deposit.player_id}</:item>
+    <:item title="Op">{@deposit.op_id}</:item>
+    <:item title="Txn amount">{@deposit.txn_amount}</:item>
+    <:item title="Tax amount">{@deposit.tax_amount}</:item>
+    <:item title="Wallet affected amount">{@deposit.wallet_affected_amount}</:item>
+    <:item title="Txn status">{@deposit.txn_status}</:item>
+    <:item title="Txn date">{@deposit.txn_date}</:item>
+    <:item title="Txn mode">{@deposit.txn_mode}</:item>
+    <:item title="Process charges">{@deposit.process_charges}</:item>
+    <:item title="Codigo lottopar">{@deposit.codigo_lottopar}</:item>
+    <:item title="Ref txn">{@deposit.ref_txn_id}</:item>
+    <:item title="Payment type">{@deposit.payment_type}</:item>
+    <:item title="Sub payment type">{@deposit.sub_payment_type}</:item>
+    <:item title="Service charges">{@deposit.service_charges}</:item>
+    <:item title="Tp txn">{@deposit.tp_txn_id}</:item>
+    <:item title="Retail data">{@deposit.retail_data}</:item>
+  </.list>
+</Layouts.app>

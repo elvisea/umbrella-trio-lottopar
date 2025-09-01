@@ -66,4 +66,88 @@ defmodule UmbrellaTrioLottoparWeb.FinanceTest do
       assert %Ecto.Changeset{} = Finance.change_wallet(wallet)
     end
   end
+
+  describe "deposits" do
+    alias UmbrellaTrioLottoparWeb.Finance.Deposit
+
+    import UmbrellaTrioLottoparWeb.FinanceFixtures
+
+    @invalid_attrs %{player_id: nil, op_id: nil, txn_amount: nil, tax_amount: nil, wallet_affected_amount: nil, txn_status: nil, txn_date: nil, txn_mode: nil, process_charges: nil, codigo_lottopar: nil, ref_txn_id: nil, payment_type: nil, sub_payment_type: nil, service_charges: nil, tp_txn_id: nil, retail_data: nil}
+
+    test "list_deposits/0 returns all deposits" do
+      deposit = deposit_fixture()
+      assert Finance.list_deposits() == [deposit]
+    end
+
+    test "get_deposit!/1 returns the deposit with given id" do
+      deposit = deposit_fixture()
+      assert Finance.get_deposit!(deposit.id) == deposit
+    end
+
+    test "create_deposit/1 with valid data creates a deposit" do
+      valid_attrs = %{player_id: "some player_id", op_id: "some op_id", txn_amount: "120.5", tax_amount: "120.5", wallet_affected_amount: "120.5", txn_status: "some txn_status", txn_date: ~N[2025-08-31 13:55:00], txn_mode: "some txn_mode", process_charges: "some process_charges", codigo_lottopar: "some codigo_lottopar", ref_txn_id: "some ref_txn_id", payment_type: "some payment_type", sub_payment_type: "some sub_payment_type", service_charges: "some service_charges", tp_txn_id: "some tp_txn_id", retail_data: %{}}
+
+      assert {:ok, %Deposit{} = deposit} = Finance.create_deposit(valid_attrs)
+      assert deposit.player_id == "some player_id"
+      assert deposit.op_id == "some op_id"
+      assert deposit.txn_amount == Decimal.new("120.5")
+      assert deposit.tax_amount == Decimal.new("120.5")
+      assert deposit.wallet_affected_amount == Decimal.new("120.5")
+      assert deposit.txn_status == "some txn_status"
+      assert deposit.txn_date == ~N[2025-08-31 13:55:00]
+      assert deposit.txn_mode == "some txn_mode"
+      assert deposit.process_charges == "some process_charges"
+      assert deposit.codigo_lottopar == "some codigo_lottopar"
+      assert deposit.ref_txn_id == "some ref_txn_id"
+      assert deposit.payment_type == "some payment_type"
+      assert deposit.sub_payment_type == "some sub_payment_type"
+      assert deposit.service_charges == "some service_charges"
+      assert deposit.tp_txn_id == "some tp_txn_id"
+      assert deposit.retail_data == %{}
+    end
+
+    test "create_deposit/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Finance.create_deposit(@invalid_attrs)
+    end
+
+    test "update_deposit/2 with valid data updates the deposit" do
+      deposit = deposit_fixture()
+      update_attrs = %{player_id: "some updated player_id", op_id: "some updated op_id", txn_amount: "456.7", tax_amount: "456.7", wallet_affected_amount: "456.7", txn_status: "some updated txn_status", txn_date: ~N[2025-09-01 13:55:00], txn_mode: "some updated txn_mode", process_charges: "some updated process_charges", codigo_lottopar: "some updated codigo_lottopar", ref_txn_id: "some updated ref_txn_id", payment_type: "some updated payment_type", sub_payment_type: "some updated sub_payment_type", service_charges: "some updated service_charges", tp_txn_id: "some updated tp_txn_id", retail_data: %{}}
+
+      assert {:ok, %Deposit{} = deposit} = Finance.update_deposit(deposit, update_attrs)
+      assert deposit.player_id == "some updated player_id"
+      assert deposit.op_id == "some updated op_id"
+      assert deposit.txn_amount == Decimal.new("456.7")
+      assert deposit.tax_amount == Decimal.new("456.7")
+      assert deposit.wallet_affected_amount == Decimal.new("456.7")
+      assert deposit.txn_status == "some updated txn_status"
+      assert deposit.txn_date == ~N[2025-09-01 13:55:00]
+      assert deposit.txn_mode == "some updated txn_mode"
+      assert deposit.process_charges == "some updated process_charges"
+      assert deposit.codigo_lottopar == "some updated codigo_lottopar"
+      assert deposit.ref_txn_id == "some updated ref_txn_id"
+      assert deposit.payment_type == "some updated payment_type"
+      assert deposit.sub_payment_type == "some updated sub_payment_type"
+      assert deposit.service_charges == "some updated service_charges"
+      assert deposit.tp_txn_id == "some updated tp_txn_id"
+      assert deposit.retail_data == %{}
+    end
+
+    test "update_deposit/2 with invalid data returns error changeset" do
+      deposit = deposit_fixture()
+      assert {:error, %Ecto.Changeset{}} = Finance.update_deposit(deposit, @invalid_attrs)
+      assert deposit == Finance.get_deposit!(deposit.id)
+    end
+
+    test "delete_deposit/1 deletes the deposit" do
+      deposit = deposit_fixture()
+      assert {:ok, %Deposit{}} = Finance.delete_deposit(deposit)
+      assert_raise Ecto.NoResultsError, fn -> Finance.get_deposit!(deposit.id) end
+    end
+
+    test "change_deposit/1 returns a deposit changeset" do
+      deposit = deposit_fixture()
+      assert %Ecto.Changeset{} = Finance.change_deposit(deposit)
+    end
+  end
 end

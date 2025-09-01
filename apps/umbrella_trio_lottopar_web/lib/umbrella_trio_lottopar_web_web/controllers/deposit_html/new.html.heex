@@ -1,0 +1,8 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    New Deposit
+    <:subtitle>Use this form to manage deposit records in your database.</:subtitle>
+  </.header>
+
+  <.deposit_form changeset={@changeset} action={~p"/deposits"} return_to={~p"/deposits"} />
+</Layouts.app>
