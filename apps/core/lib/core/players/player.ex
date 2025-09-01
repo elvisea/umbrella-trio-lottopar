@@ -22,7 +22,7 @@ defmodule Core.Players.Player do
     field(:last_login, :naive_datetime)
 
     # Relacionamentos
-    belongs_to(:operator, Core.Admin.Operator)
+    field(:op_id, :string)
     has_many(:deposits, Core.Finance.Deposit)
     has_many(:withdraws, Core.Finance.Withdraw)
     has_one(:wallet, Core.Finance.Wallet)
@@ -34,7 +34,7 @@ defmodule Core.Players.Player do
   def changeset(player, attrs) do
     player
     |> cast(attrs, [
-      :operator_id,
+      :op_id,
       :username,
       :password,
       :status,
@@ -54,7 +54,7 @@ defmodule Core.Players.Player do
       :last_login
     ])
     |> validate_required([
-      :operator_id,
+      :op_id,
       :username,
       :password,
       :status,

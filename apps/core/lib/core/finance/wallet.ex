@@ -9,8 +9,8 @@ defmodule Core.Finance.Wallet do
     field(:total_bonus, :decimal)
 
     # Relacionamentos
-    belongs_to(:player, Core.Players.Player)
-    belongs_to(:retail, Core.Retail.Retail)
+    field(:player_id, :string)
+    field(:retail_id, :string)
 
     timestamps()
   end

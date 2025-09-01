@@ -1,21 +1,21 @@
 defmodule UmbrellaTrioLottoparWeb.RetailsController do
   use UmbrellaTrioLottoparWeb, :controller
 
-  alias UmbrellaTrioLottoparWeb.Retail
+  alias UmbrellaTrioLottoparWeb.Retail, as: RetailContext
   alias Core.Retail.Retail
 
   def index(conn, _params) do
-    retails = Retail.list_retails()
+    retails = RetailContext.list_retails()
     render(conn, :index, retails_collection: retails)
   end
 
   def new(conn, _params) do
-    changeset = Retail.change_retail(%Retail{})
+    changeset = RetailContext.change_retail(%Retail{})
     render(conn, :new, changeset: changeset)
   end
 
   def create(conn, %{"retails" => retails_params}) do
-    case Retail.create_retail(retails_params) do
+    case RetailContext.create_retail(retails_params) do
       {:ok, retail} ->
         conn
         |> put_flash(:info, "Retail created successfully.")
@@ -27,20 +27,20 @@ defmodule UmbrellaTrioLottoparWeb.RetailsController do
   end
 
   def show(conn, %{"id" => id}) do
-    retail = Retail.get_retail!(id)
+    retail = RetailContext.get_retail!(id)
     render(conn, :show, retails: retail)
   end
 
   def edit(conn, %{"id" => id}) do
-    retail = Retail.get_retail!(id)
-    changeset = Retail.change_retail(retail)
+    retail = RetailContext.get_retail!(id)
+    changeset = RetailContext.change_retail(retail)
     render(conn, :edit, retails: retail, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "retails" => retails_params}) do
-    retail = Retail.get_retail!(id)
+    retail = RetailContext.get_retail!(id)
 
-    case Retail.update_retail(retail, retails_params) do
+    case RetailContext.update_retail(retail, retails_params) do
       {:ok, retail} ->
         conn
         |> put_flash(:info, "Retail updated successfully.")
@@ -52,8 +52,8 @@ defmodule UmbrellaTrioLottoparWeb.RetailsController do
   end
 
   def delete(conn, %{"id" => id}) do
-    retail = Retail.get_retail!(id)
-    {:ok, _retail} = Retail.delete_retail(retail)
+    retail = RetailContext.get_retail!(id)
+    {:ok, _retail} = RetailContext.delete_retail(retail)
 
     conn
     |> put_flash(:info, "Retail deleted successfully.")

@@ -10,7 +10,7 @@ defmodule Core.Admin.User do
     field(:otp, :string)
 
     # Relacionamentos
-    belongs_to(:operator, Core.Admin.Operator)
+    field(:op_id, :string)
 
     timestamps()
   end
@@ -19,7 +19,7 @@ defmodule Core.Admin.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [
-      :operator_id,
+      :op_id,
       :user_type,
       :status,
       :username,
@@ -27,7 +27,7 @@ defmodule Core.Admin.User do
       :otp
     ])
     |> validate_required([
-      :operator_id,
+      :op_id,
       :user_type,
       :status,
       :username,

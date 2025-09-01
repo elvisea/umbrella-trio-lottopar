@@ -20,8 +20,8 @@ defmodule Core.Finance.Withdraw do
     field(:retail_data, :map)
 
     # Relacionamentos
-    belongs_to(:player, Core.Players.Player)
-    belongs_to(:operator, Core.Admin.Operator)
+    field(:player_id, :string)
+    field(:op_id, :string)
 
     timestamps()
   end
@@ -31,7 +31,7 @@ defmodule Core.Finance.Withdraw do
     withdraw
     |> cast(attrs, [
       :player_id,
-      :operator_id,
+      :op_id,
       :txn_amount,
       :tax_amount,
       :wallet_affected_amount,
@@ -50,7 +50,7 @@ defmodule Core.Finance.Withdraw do
     ])
     |> validate_required([
       :player_id,
-      :operator_id,
+      :op_id,
       :txn_amount,
       :tax_amount,
       :wallet_affected_amount,
