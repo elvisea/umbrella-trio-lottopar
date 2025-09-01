@@ -1,0 +1,21 @@
+<.form :let={f} for={@changeset} action={@action}>
+  <.input field={f[:player_id]} type="text" label="Player" />
+  <.input field={f[:op_id]} type="text" label="Op" />
+  <.input field={f[:txn_amount]} type="number" label="Txn amount" step="any" />
+  <.input field={f[:tax_amount]} type="number" label="Tax amount" step="any" />
+  <.input field={f[:wallet_affected_amount]} type="number" label="Wallet affected amount" step="any" />
+  <.input field={f[:txn_status]} type="text" label="Txn status" />
+  <.input field={f[:txn_date]} type="datetime-local" label="Txn date" />
+  <.input field={f[:txn_mode]} type="text" label="Txn mode" />
+  <.input field={f[:process_charges]} type="text" label="Process charges" />
+  <.input field={f[:codigo_lottopar]} type="text" label="Codigo lottopar" />
+  <.input field={f[:ref_txn_id]} type="text" label="Ref txn" />
+  <.input field={f[:payment_type]} type="text" label="Payment type" />
+  <.input field={f[:sub_payment_type]} type="text" label="Sub payment type" />
+  <.input field={f[:service_charges]} type="text" label="Service charges" />
+  <.input field={f[:tp_txn_id]} type="text" label="Tp txn" />
+  <footer>
+    <.button variant="primary">Save Deposit</.button>
+    <.button :if={@return_to} href={@return_to}>Cancel</.button>
+  </footer>
+</.form>

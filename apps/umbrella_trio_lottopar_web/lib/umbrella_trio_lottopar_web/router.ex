@@ -56,6 +56,13 @@ defmodule UmbrellaTrioLottoparWeb.Router do
     resources "/", DeviceController
   end
 
+  # Finance scope
+  scope "/finance", UmbrellaTrioLottoparWeb do
+    pipe_through :browser
+
+    resources "/deposits", DepositController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", UmbrellaTrioLottoparWeb do
   #   pipe_through :api
