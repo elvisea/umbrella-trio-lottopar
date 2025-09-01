@@ -20,6 +20,7 @@ config :umbrella_trio_lottopar_web, UmbrellaTrioLottoparWeb.Endpoint,
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "4Nx4Am8+EDYZ0TsAlVq8ULD+wD34Fptr6IdIgsvMRH7RWrbWqQgqn3IRHKC4o2ZK",
+  pubsub_server: UmbrellaTrioLottoparWeb.PubSub,
   watchers: [
     esbuild:
       {Esbuild, :install_and_run, [:umbrella_trio_lottopar_web, ~w(--sourcemap=inline --watch)]},
