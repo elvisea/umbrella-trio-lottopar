@@ -1,7 +1,10 @@
 {application,core,
-             [{modules,['Elixir.Core']},
+             [{modules,['Elixir.Core','Elixir.UmbrellaTrioLottoparWeb.Admin',
+                        'Elixir.UmbrellaTrioLottoparWeb.Admin.User',
+                        'Elixir.UmbrellaTrioLottoparWeb.Repo']},
               {optional_applications,[]},
-              {applications,[kernel,stdlib,elixir,logger]},
+              {applications,[kernel,stdlib,elixir,logger,ecto,ecto_sql,
+                             postgrex]},
               {description,"core"},
               {registered,[]},
               {vsn,"0.1.0"}]}.
