@@ -46,10 +46,34 @@ umbrella/
 ### **Pré-requisitos**
 - Elixir 1.15+
 - Phoenix 1.8+
-- PostgreSQL
+- PostgreSQL (ou Docker)
 - Node.js (para assets)
 
-### **Instalação**
+### **🐳 Opção 1: Com Docker (Recomendado)**
+
+```bash
+# Clone o repositório
+git clone https://github.com/elvisea/umbrella-trio-lottopar.git
+cd umbrella-trio-lottopar
+
+# Copie o arquivo de exemplo de variáveis de ambiente
+cp .env.example .env
+
+# Inicie o PostgreSQL com Docker Compose
+docker-compose up -d
+
+# Instale as dependências
+mix deps.get
+
+# Execute as migrações
+mix ecto.migrate
+
+# Inicie o servidor Phoenix
+mix phx.server
+```
+
+### **📦 Opção 2: Instalação Manual**
+
 ```bash
 # Clone o repositório
 git clone https://github.com/elvisea/umbrella-trio-lottopar.git
@@ -69,6 +93,46 @@ mix phx.server
 - **Backoffice**: http://localhost:4000
 - **Admin Operators**: http://localhost:4000/admin/operators
 - **LiveDashboard**: http://localhost:4000/dev/dashboard
+- **pgAdmin**: http://localhost:5050 (quando usando Docker)
+
+## 🐳 **Docker Compose**
+
+### **Serviços Disponíveis**
+- **PostgreSQL**: Banco de dados principal na porta 5432
+- **pgAdmin**: Interface web para administração do PostgreSQL na porta 5050
+
+### **Comandos Úteis**
+```bash
+# Iniciar todos os serviços
+docker-compose up -d
+
+# Ver logs dos serviços
+docker-compose logs -f
+
+# Parar todos os serviços
+docker-compose down
+
+# Parar e remover volumes (CUIDADO: apaga dados)
+docker-compose down -v
+
+# Reiniciar um serviço específico
+docker-compose restart postgres
+```
+
+### **Configuração de Variáveis de Ambiente**
+Edite o arquivo `.env` para personalizar as configurações:
+```bash
+# PostgreSQL
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=umbrella_trio_lottopar_dev
+POSTGRES_PORT=5432
+
+# pgAdmin
+PGADMIN_EMAIL=admin@lottopar.com
+PGADMIN_PASSWORD=admin
+PGADMIN_PORT=5050
+```
 
 ## 🧠 **Padrões de Qualidade e Estilo de Código**
 
