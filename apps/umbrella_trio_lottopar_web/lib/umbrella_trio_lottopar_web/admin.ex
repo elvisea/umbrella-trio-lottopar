@@ -4,7 +4,7 @@ defmodule UmbrellaTrioLottoparWeb.Admin do
   """
 
   import Ecto.Query, warn: false
-  alias UmbrellaTrioLottoparWeb.Repo
+  alias UmbrellaTrioLottopar.Repo
 
   alias Core.Admin.Operator
 

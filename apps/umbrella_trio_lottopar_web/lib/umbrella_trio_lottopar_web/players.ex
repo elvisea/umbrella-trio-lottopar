@@ -4,7 +4,7 @@ defmodule UmbrellaTrioLottoparWeb.Players do
   """
 
   import Ecto.Query, warn: false
-  alias UmbrellaTrioLottoparWeb.Repo
+  alias UmbrellaTrioLottopar.Repo
 
   alias Core.Players.Player
 

@@ -11,9 +11,8 @@ defmodule Core.Admin.Operator do
     field(:timezone, :string)
 
     # Relacionamentos
-    has_many(:users, Core.Admin.User)
-    has_many(:players, Core.Players.Player)
-    has_many(:retails, Core.Retail.Retail)
+    # Nota: Os relacionamentos foram removidos pois as tabelas usam op_id como string
+    # em vez de operator_id como foreign key
 
     timestamps()
   end

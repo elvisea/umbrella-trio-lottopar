@@ -16,7 +16,7 @@ defmodule Core.Retail.Retail do
     field(:manager_name, :string)
 
     # Relacionamentos
-    belongs_to(:operator, Core.Admin.Operator)
+    field(:op_id, :string)
     has_many(:devices, Core.Retail.Device)
 
     timestamps()
@@ -26,7 +26,7 @@ defmodule Core.Retail.Retail do
   def changeset(retail, attrs) do
     retail
     |> cast(attrs, [
-      :operator_id,
+      :op_id,
       :name,
       :tax_id,
       :status,
@@ -40,7 +40,7 @@ defmodule Core.Retail.Retail do
       :manager_name
     ])
     |> validate_required([
-      :operator_id,
+      :op_id,
       :name,
       :tax_id,
       :status,

@@ -19,8 +19,8 @@ defmodule Core.Finance.Deposit do
     field(:retail_data, :map)
 
     # Relacionamentos
-    belongs_to(:player, Core.Players.Player)
-    belongs_to(:operator, Core.Admin.Operator)
+    field(:player_id, :string)
+    field(:op_id, :string)
 
     timestamps()
   end
@@ -30,7 +30,7 @@ defmodule Core.Finance.Deposit do
     deposit
     |> cast(attrs, [
       :player_id,
-      :operator_id,
+      :op_id,
       :txn_amount,
       :tax_amount,
       :wallet_affected_amount,
@@ -48,7 +48,7 @@ defmodule Core.Finance.Deposit do
     ])
     |> validate_required([
       :player_id,
-      :operator_id,
+      :op_id,
       :txn_amount,
       :tax_amount,
       :wallet_affected_amount,

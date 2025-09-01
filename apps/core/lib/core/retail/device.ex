@@ -16,7 +16,7 @@ defmodule Core.Retail.Device do
     field(:coordinates, :map)
 
     # Relacionamentos
-    belongs_to(:retail, Core.Retail.Retail)
+    field(:retail_id, :string)
 
     timestamps()
   end
