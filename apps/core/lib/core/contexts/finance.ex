@@ -6,8 +6,6 @@ defmodule Core.Contexts.Finance do
   import Ecto.Query, warn: false
   alias Repo.Repo, as: Repo
 
-
-
   @doc """
   Returns the list of wallets.
 
@@ -102,8 +100,6 @@ defmodule Core.Contexts.Finance do
     Wallet.changeset(wallet, attrs)
   end
 
-
-
   @doc """
   Returns the list of deposits.
 
@@ -197,8 +193,6 @@ defmodule Core.Contexts.Finance do
   def change_deposit(%Deposit{} = deposit, attrs \\ %{}) do
     Deposit.changeset(deposit, attrs)
   end
-
-
 
   @doc """
   Returns the list of withdraws.

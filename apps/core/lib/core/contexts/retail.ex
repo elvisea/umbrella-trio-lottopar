@@ -6,7 +6,6 @@ defmodule Core.Contexts.Retail do
   import Ecto.Query, warn: false
   alias Repo.Repo, as: Repo
 
-
   @doc """
   Returns the list of retails.
 
@@ -100,8 +99,6 @@ defmodule Core.Contexts.Retail do
   def change_retail(%Repo.Schemas.Retail.Retail{} = retail, attrs \\ %{}) do
     Retail.changeset(retail, attrs)
   end
-
-
 
   @doc """
   Returns the list of devices.

@@ -5,8 +5,6 @@ defmodule Core.Contexts.Admin do
 
   import Ecto.Query, warn: false
 
-
-
   @doc """
   Returns the list of operators.
 
@@ -100,8 +98,6 @@ defmodule Core.Contexts.Admin do
   def change_operator(%Repo.Schemas.Admin.Operator{} = operator, attrs \\ %{}) do
     Repo.Schemas.Admin.Operator.changeset(operator, attrs)
   end
-
-
 
   @doc """
   Returns the list of users.
