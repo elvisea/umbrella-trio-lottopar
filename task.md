@@ -361,7 +361,7 @@ Criação do modelo de entidade **Withdraw** no contexto **Finance** do `apps/co
 ### **TASK\_010 - Criar Entidade Wager**
 
 **Descrição**
-Criação do modelo de entidade **Wager** no contexto **Games** do `apps/core`, usando o comando `mix phx.gen.html`, incluindo os campos definidos na especificação.
+Criação do modelo de entidade **Wager** no contexto **Finance** do `apps/core`, usando o comando `mix phx.gen.html`, incluindo os campos definidos na especificação.
 
 **Objetivos**
 
@@ -372,7 +372,7 @@ Criação do modelo de entidade **Wager** no contexto **Games** do `apps/core`, 
 
 1.  **Gerar a entidade Wager**: Execute o comando com os campos da tabela:
     ```bash
-    mix phx.gen.html Games Wager wagers player_id:string op_id:string txn_amount:decimal bonus_amount:decimal cash_amount:decimal tax_amount:decimal txn_status:string txn_date:datetime txn_mode:string process_charges:string codigo_lottopar:string ref_txn_id:string service_charges:string tp_txn_id:string sale_transaction_id:string ticket_number:string game_id:string game_type:string game_name:string game_data:map event:map retail_data:map
+    mix phx.gen.html Finance Wager wagers player_id:string op_id:string op_id:string txn_amount:decimal bonus_amount:decimal cash_amount:decimal tax_amount:decimal txn_status:string txn_date:datetime txn_mode:string process_charges:string codigo_lottopar:string ref_txn_id:string service_charges:string tp_txn_id:string sale_transaction_id:string ticket_number:string game_id:string game_type:string game_name:string game_data:map event:map retail_data:map
     ```
 2.  **Configurar as rotas**: Adicione o `resource` para a entidade `Wager` no arquivo de rotas.
 
@@ -386,7 +386,7 @@ Criação do modelo de entidade **Wager** no contexto **Games** do `apps/core`, 
 ### **TASK\_011 - Criar Entidade Winning**
 
 **Descrição**
-Criação do modelo de entidade **Winning** no contexto **Games** do `apps/core`, usando o comando `mix phx.gen.html`, incluindo os campos definidos na especificação.
+Criação do modelo de entidade **Winning** no contexto **Finance** do `apps/core`, usando o comando `mix phx.gen.html`, incluindo os campos definidos na especificação.
 
 **Objetivos**
 
@@ -397,7 +397,7 @@ Criação do modelo de entidade **Winning** no contexto **Games** do `apps/core`
 
 1.  **Gerar a entidade Winning**: Execute o comando com os campos da tabela:
     ```bash
-    mix phx.gen.html Games Winning winnings player_id:string op_id:string txn_amount:decimal bonus_amount:decimal cash_amount:decimal win_amount:decimal tax_amount:decimal txn_status:string txn_date:datetime txn_mode:string process_charges:string codigo_lottopar:string ref_txn_id:string service_charges:string tp_txn_id:string sale_transaction_id:string ticket_number:string game_id:string game_type:string game_name:string game_data:map event:map winning_type:string winning_category:string retail_data:map
+    mix phx.gen.html Finance Winning winnings player_id:string op_id:string txn_amount:decimal bonus_amount:decimal cash_amount:decimal win_amount:decimal tax_amount:decimal txn_status:string txn_date:datetime txn_mode:string process_charges:string codigo_lottopar:string ref_txn_id:string service_charges:string tp_txn_id:string sale_transaction_id:string ticket_number:string game_id:string game_type:string game_name:string game_data:map event:map winning_type:string winning_category:string retail_data:map
     ```
 2.  **Configurar as rotas**: Adicione o `resource` para a entidade `Winning` no arquivo de rotas.
 
@@ -461,7 +461,7 @@ Criação do modelo de entidade **Session** no contexto **Players** do `apps/cor
 ### **TASK\_014 - Criar Entidade License**
 
 **Descrição**
-Criação do modelo de entidade **License** no contexto **Core**, usando o comando `mix phx.gen.html`, incluindo os campos definidos na especificação.
+Criação do modelo de entidade **License** no contexto **Admin**, usando o comando `mix phx.gen.html`, incluindo os campos definidos na especificação.
 
 **Objetivos**
 
@@ -470,9 +470,9 @@ Criação do modelo de entidade **License** no contexto **Core**, usando o coman
 
 **Passos da Tarefa**
 
-1.  **Gerar a entidade License**: Execute o comando com os campos da tabela:
+1.  **Gerar a entidade License**: Execute o comando com os campos definidos na tabela:
     ```bash
-    mix phx.gen.html Core License licenses op_id:string contract_number:string contract_file:string license_type:string business_type:string start_date:date end_date:date status:string
+    mix phx.gen.html Admin License licenses op_id:string contract_number:string contract_file:string license_type:string business_type:string start_date:date end_date:date status:string
     ```
 2.  **Configurar as rotas**: Adicione o `resource` para a entidade `License` no arquivo de rotas.
 
