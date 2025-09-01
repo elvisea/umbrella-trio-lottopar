@@ -1,0 +1,46 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Listing Wagers
+    <:actions>
+      <.button href={~p"/games/wagers/new"}>
+        <.icon name="hero-plus" /> New Wager
+      </.button>
+    </:actions>
+  </.header>
+
+  <.table id="wagers" rows={@wagers} row_click={&JS.navigate(~p"/games/wagers/#{&1}")}>
+    <:col :let={wager} label="Player">{wager.player_id}</:col>
+    <:col :let={wager} label="Op">{wager.op_id}</:col>
+    <:col :let={wager} label="Txn amount">{wager.txn_amount}</:col>
+    <:col :let={wager} label="Bonus amount">{wager.bonus_amount}</:col>
+    <:col :let={wager} label="Cash amount">{wager.cash_amount}</:col>
+    <:col :let={wager} label="Tax amount">{wager.tax_amount}</:col>
+    <:col :let={wager} label="Txn status">{wager.txn_status}</:col>
+    <:col :let={wager} label="Txn date">{wager.txn_date}</:col>
+    <:col :let={wager} label="Txn mode">{wager.txn_mode}</:col>
+    <:col :let={wager} label="Process charges">{wager.process_charges}</:col>
+    <:col :let={wager} label="Codigo lottopar">{wager.codigo_lottopar}</:col>
+    <:col :let={wager} label="Ref txn">{wager.ref_txn_id}</:col>
+    <:col :let={wager} label="Service charges">{wager.service_charges}</:col>
+    <:col :let={wager} label="Tp txn">{wager.tp_txn_id}</:col>
+    <:col :let={wager} label="Sale transaction">{wager.sale_transaction_id}</:col>
+    <:col :let={wager} label="Ticket number">{wager.ticket_number}</:col>
+    <:col :let={wager} label="Game">{wager.game_id}</:col>
+    <:col :let={wager} label="Game type">{wager.game_type}</:col>
+    <:col :let={wager} label="Game name">{wager.game_name}</:col>
+    <:col :let={wager} label="Game data">{wager.game_data}</:col>
+    <:col :let={wager} label="Event">{wager.event}</:col>
+    <:col :let={wager} label="Retail data">{wager.retail_data}</:col>
+    <:action :let={wager}>
+      <div class="sr-only">
+        <.link navigate={~p"/games/wagers/#{wager}"}>Show</.link>
+      </div>
+      <.link navigate={~p"/games/wagers/#{wager}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={wager}>
+      <.link href={~p"/games/wagers/#{wager}"} method="delete" data-confirm="Are you sure?">
+        Delete
+      </.link>
+    </:action>
+  </.table>
+</Layouts.app>

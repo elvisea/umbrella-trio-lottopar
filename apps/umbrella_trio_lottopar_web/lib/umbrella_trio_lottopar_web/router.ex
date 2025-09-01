@@ -64,6 +64,13 @@ defmodule UmbrellaTrioLottoparWeb.Router do
     resources "/withdraws", WithdrawController
   end
 
+  # Games scope
+  scope "/games", UmbrellaTrioLottoparWeb do
+    pipe_through :browser
+
+    resources "/wagers", WagerController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", UmbrellaTrioLottoparWeb do
   #   pipe_through :api
